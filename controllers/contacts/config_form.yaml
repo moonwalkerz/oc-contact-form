@@ -1,0 +1,10 @@
+name: Contacts
+form: $/martinimultimedia/contact/models/contact/fields.yaml
+modelClass: MartiniMultimedia\Contact\Models\Contact
+defaultRedirect: martinimultimedia/contact/contact
+create:
+    redirect: 'martinimultimedia/contact/contacts/update/:id'
+    redirectClose: martinimultimedia/contact/contacts
+update:
+    redirect: martinimultimedia/contact/contacts
+    redirectClose: martinimultimedia/contact/contacts

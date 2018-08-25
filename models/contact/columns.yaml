@@ -1,0 +1,15 @@
+columns:
+    email:
+        label: email
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: data
+        type: date
+        sortable: true
+    name:
+        label: 'Nome e Cognome'
+        type: text
+        searchable: true
+        sortable: true

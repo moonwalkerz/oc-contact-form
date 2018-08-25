@@ -1,0 +1,18 @@
+fields:
+    name:
+        label: 'Nome e Cognome'
+        span: full
+        type: text
+    phone:
+        label: Telefono
+        span: auto
+        type: text
+    email:
+        label: e-mail
+        span: auto
+        type: text
+    message:
+        label: Message
+        size: large
+        span: full
+        type: textarea
