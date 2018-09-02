@@ -21,8 +21,5 @@ class Contact extends Model
      */
     public $timestamps = true;
 
-    /**
-     * @var string The database table used by the model.
-     */
     public $table = 'martinimultimedia_contact_contacts';
 }

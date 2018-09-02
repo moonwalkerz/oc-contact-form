@@ -6,3 +6,6 @@
 1.0.3:
     - 'Updated table martinimultimedia_contact_contacts'
     - builder_table_update_martinimultimedia_contact_contacts.php
+1.0.4:
+    - 'Updated table martinimultimedia_contact_contacts'
+    - builder_table_update_martinimultimedia_contact_contacts_2.php

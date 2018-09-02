@@ -9,11 +9,15 @@ use ValidationException;
 use Redirect;
 use Flash;
 use MartiniMultimedia\Contact\Models\Contact;
+use MartiniMultimedia\Contact\Models\Settings;
 
 class ContactForm extends ComponentBase
 {
-
+	var $settings;
 	var $is_phone_requested;
+	var $is_gdpr_enabled;
+	var $enable_gdpr_marketing;
+	var $enable_gdpr_newsletter;
 
 	public function componentDetails(){
 		return [
@@ -43,11 +47,31 @@ class ContactForm extends ComponentBase
 			'is_phone_requested' => [
 				'title' => 'Phone?',
 				'description' => 'is phone requested?',
+				'type' => 'checkbox',
 				'default' => false 
 			],
 			'is_phone_mandatory' => [
 				'title' => 'Phone mandatory?',
 				'description' => 'is phone mandatory?',
+				'type' => 'checkbox',
+				'default' => false 
+			],
+			'is_gdpr_enabled' => [
+				'title' => 'Enable gdpr checkboxes?',
+				'description' => 'enable gdpr permissions?',
+				'type' => 'checkbox',
+				'default' => true 
+			],
+			'enable_gdpr_marketing' => [
+				'title' => 'Marketing checkbox?',
+				'description' => 'Ask permission to share information to third parties?',
+				'type' => 'checkbox',
+				'default' => false 
+			],
+			'enable_gdpr_newsletter' => [
+				'title' => 'Newsletter checkbox?',
+				'description' => 'Ask permission to subscribe to a newsletter?',
+				'type' => 'checkbox',
 				'default' => false 
 			]
 
@@ -55,10 +79,14 @@ class ContactForm extends ComponentBase
 	}
 
 	public function onRun() {
-        
+		
+		$this->settings=$this->page['settings'] = Settings::instance();
+		//Log::info('->'.$this->settings);
         $this->is_phone_requested=$this->page['is_phone_requested'] = $this->property('is_phone_requested');
+		$this->is_gdpr_enabled=$this->page['is_gdpr_enabled'] = $this->property('is_gdpr_enabled');
+		$this->enable_gdpr_marketing=$this->page['enable_gdpr_marketing'] = $this->property('enable_gdpr_marketing');
+		$this->enable_gdpr_newsletter=$this->page['enable_gdpr_newsletter'] = $this->property('enable_gdpr_newsletter');
 
-     //   dd($this->slider);
     }
 
 

@@ -1,22 +1,55 @@
-<form data-request="{{__SELF__}}::onSend"  data-request-validate data-request-flash>
-	<div class="input-with-label text-left">
-		<span>Nome e Cognome</span>
-		<input name="name" type="text">
-		<span  class="error" data-validate-for="name">Inserire nome e cognome</span>
+{% put styles %}
+<style>.error {display:none}</style>
+{% endput %}
+
+
+<form data-request="contactform::onSend"  data-request-validate data-request-flash>
+	<div class="form-group">
+		<label for="name">	Name </label>
+		<input id="name" name="name" placeholder="First & last name" class="form-control" type="text">
+		<span  class="error" data-validate-for="name">Insert your first & last name</span>
 	</div>
-	<div class="input-with-label text-left">
-		<span>Il tuo indirizzo email</span>
-		<input name="email" type="text">
-		<span  class="error" data-validate-for="email">Inserire indirizzo email</span>
+	<div class="form-group">
+		<label for="email">Email address</label>
+		<input id="email" name="email" placeholder="your email" class="form-control"type="text">
+		<span  class="error"  data-validate-for="email">Insert your email address</span>
+	</div>
+{% if (is_phone_requested) %}
+	<div class="form-group">
+		<label for="phone">Phone Number</label>
+		<input id="phone" name="email" placeholder="+39..." class="form-control"type="text">
+		<span  class="error"  data-validate-for="email">Insert your phone number</span>
+	</div>
+{% endif %}
+
+
+
+	<div class="form-group">
+		<label for="message">Message</label>
+		<textarea id="message" name="message" class="form-control" rows="3"></textarea>
+		<span  class="error" data-validate-for="message">Insert your phone number</span>
 	</div>
 
-	<div class="input-with-label text-left">
-		<span>Messaggio</span>
-		<textarea name="message" rows="3"></textarea>
-		<span  class="error" data-validate-for="message">Inserire il messaggio</span>
-	</div>
-	<p>Cliccando il tasto "invia" confermo di aver letto <a href="/privacy" target="_blank">l'informativa sulla privacy</a> e acconsento al trattamento dei dati personali.</p>
-	<input value="Invia" type="submit">
+{% if (is_gdpr_enabled) %}
+<div class="form-group">
+{{ settings.txt_gdpr}}
+</div>
+<div class="form-group">
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="gdpr">
+    <label name="gdpr" class="form-check-label" for="gdpr">{{ settings.txt_contact}}</label>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="marketing">
+    <label name="marketing" class="form-check-label" for="marketing">{{ settings.txt_promo}}</label>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="newsletter">
+    <label name="newsletter" class="form-check-label" for="newsletter">{{ settings.txt_third_parties}}</label>
+  </div>
+</div>
+{% endif %}
+	<input class="btn btn-primary btn-block" value="Invia" type="submit">
 </form>
 {% flash success %}
 <div class="alert alert-success alert-dismissible" role="alert">
