@@ -8,21 +8,24 @@
         'contacts' =>'Contacts'
     ],
     'contactform' => [
-        'name' =>'Name'
+        'name' =>'First and last name',
+        'email' =>'Email',
+        'phone' =>'Phone',
+        'message' =>'Message'
     ],
     'settings' => [
         'txt_gdpr' =>'Generic GDPR Text',
-        'txt_contact' =>'Informativa di contatto',
-        'txt_promo' =>'Informativa sulle promozioni',
-        'txt_third_parties' =>'Informativa terze parti',
-        'txt_gdpr_comment' =>'Inserisci un testo generico relativo al GDPR',
-        'txt_contact_comment' =>'Inserisci l\'informativa per essere ricontattati',
-        'txt_promo_comment' =>'Inserisci l\'informativa relaiva alle promozioni',
-        'txt_third_parties_comment' =>'Informativa nel caso di comunicazione a terze parti',
-        'enabled_gdpr' =>'Attiva informative GDPR',
-        'enabled_contact' =>'Attiva l\'informativa per essere ricontattati',
-        'enabled_promo' =>'Attiva l\'informativa relativa alle promozioni',
-        'enabled_third_parties' =>'Attiva l\'informativa nel caso di comunicazione a terze parti',
+        'txt_contact' =>'Contact privacy informations',
+        'txt_promo' =>'Advertising privacy informations',
+        'txt_third_parties' =>'Third parties privacy information',
+        'txt_gdpr_comment' =>'Type a generic privacy information',
+        'txt_contact_comment' =>'Type the privacy rule about contact',
+        'txt_promo_comment' =>'Type the privacy rule about advertising',
+        'txt_third_parties_comment' =>'Type the privacy rule about third parties',
+        'enabled_gdpr' =>'Enable GDPR rules',
+        'enabled_contact' =>'Enable the contact privacy rule',
+        'enabled_promo' =>'Enable the advertising privacy rule',
+        'enabled_third_parties' =>'Enable the third parties privacy rule',
         'txt_gdpr_default' =>'I have carefully read the privacy policy and expressly accept the privacy statement and all terms in each specific box.
         Attention: not all consents are mandatory! If you prefer to select each individual consent to the privacy policy.',
         'txt_contact_default' =>'I consent to the processing of my personal data to allow _______ contact me in the future with respect to my requests.',

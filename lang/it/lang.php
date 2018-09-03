@@ -8,7 +8,10 @@
         'contacts' =>'Contatti'
     ],
     'contactform' => [
-        'name' =>'Nome'
+        'name' =>'Nome e cognome',
+        'email' =>'Email',
+        'phone' =>'Telefono',
+        'message' =>'Messaggio'
     ],
     'settings' => [
         'txt_gdpr' =>'Testo generico GDPR',
@@ -17,7 +20,7 @@
         'txt_third_parties' =>'Informativa terze parti',
         'txt_gdpr_comment' =>'Inserisci un testo generico relativo al GDPR',
         'txt_contact_comment' =>'Inserisci l\'informativa per essere ricontattati',
-        'txt_promo_comment' =>'Inserisci l\'informativa relaiva alle promozioni',
+        'txt_promo_comment' =>'Inserisci l\'informativa relativa alle promozioni',
         'txt_third_parties_comment' =>'Informativa nel caso di comunicazione a terze parti',
         'enabled_gdpr' =>'Attiva informative GDPR',
         'enabled_contact' =>'Attiva l\'informativa per essere ricontattati',
