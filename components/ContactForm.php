@@ -58,19 +58,19 @@ class ContactForm extends ComponentBase
 			],
 			'is_gdpr_enabled' => [
 				'title' => 'Enable gdpr checkboxes?',
-				'description' => 'enable gdpr permissions?',
+				'description' => 'enable gdpr checkboxes?',
 				'type' => 'checkbox',
 				'default' => true 
 			],
-			'enable_gdpr_marketing' => [
-				'title' => 'Marketing checkbox?',
-				'description' => 'Ask permission to share information to third parties?',
+			'enable_gdpr_promo' => [
+				'title' => 'Promotional checkbox?',
+				'description' => 'Ask permission to subscribe to a promotional newsletter?',
 				'type' => 'checkbox',
 				'default' => false 
 			],
-			'enable_gdpr_newsletter' => [
-				'title' => 'Newsletter checkbox?',
-				'description' => 'Ask permission to subscribe to a newsletter?',
+			'enable_gdpr_third' => [
+				'title' => 'Third parties checkbox?',
+				'description' => 'Ask permission to share information to third parties?',
 				'type' => 'checkbox',
 				'default' => false 
 			]

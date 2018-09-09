@@ -39,14 +39,18 @@
     <input type="checkbox" class="form-check-input" id="gdpr">
     <label name="gdpr" class="form-check-label" for="gdpr">{{ settings.txt_contact}}</label>
   </div>
+	{% if (enable_gdpr_promo) %}
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="marketing">
     <label name="marketing" class="form-check-label" for="marketing">{{ settings.txt_promo}}</label>
   </div>
+	{% endif %}
+	{% if (enable_gdpr_third) %}
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="newsletter">
     <label name="newsletter" class="form-check-label" for="newsletter">{{ settings.txt_third_parties}}</label>
   </div>
+	{% endif %}
 </div>
 {% endif %}
 	<input class="btn btn-primary btn-block" value="Invia" type="submit">
