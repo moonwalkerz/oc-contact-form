@@ -11,8 +11,12 @@
         'name' =>'Nome e cognome',
         'email' =>'Email',
         'phone' =>'Telefono',
-        'message' =>'Messaggio'
-    ],
+        'message' =>'Messaggio',
+        'id' =>  'id',
+        'contact' => 'Contattabile',
+        'promotions' => 'Promozioni',
+        'third_parties' => 'Terzi'
+    ]
     'settings' => [
         'txt_gdpr' =>'Testo generico GDPR',
         'txt_contact' =>'Informativa di contatto',

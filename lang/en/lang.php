@@ -11,7 +11,11 @@
         'name' =>'First and last name',
         'email' =>'Email',
         'phone' =>'Phone',
-        'message' =>'Message'
+        'message' =>'Message',
+        'id' =>  'id',
+        'contact' => 'Contact?',
+        'promotions' => 'Promo?',
+        'third_parties' => 'Third parties?'
     ],
     'settings' => [
         'txt_gdpr' =>'Generic GDPR Text',
