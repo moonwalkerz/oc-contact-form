@@ -3,52 +3,76 @@
 {% endput %}
 
 
-<form data-request="contactform::onSend"  data-request-validate data-request-flash>
+<form class="contact" data-request="contactform::onSend"  data-request-validate data-request-flash>
 	<div class="form-group">
 		<label for="name">{{ "martinimultimedia.contact::lang.contactform.name"|trans }} </label>
-		<input id="name" name="name" placeholder="First & last name" class="form-control" type="text">
-		<span  class="error" data-validate-for="name">Insert your first & last name</span>
+		<input id="name" name="name" placeholder="{{ 'martinimultimedia.contact::lang.contactform.name_placeholder'|trans }}" class="form-control" type="text">
+		<span  class="error" data-validate-for="name"><div class="arrow-up"></div> {{ 'martinimultimedia.contact::lang.contactform.name_placeholder'|trans }}</span>
 	</div>
 	<div class="form-group">
 		<label for="email">{{ "martinimultimedia.contact::lang.contactform.email"|trans }}</label>
-		<input id="email" name="email" placeholder="your email" class="form-control"type="text">
-		<span  class="error"  data-validate-for="email">Insert your email address</span>
+		<input id="email" name="email" placeholder="{{ 'martinimultimedia.contact::lang.contactform.email_placeholder'|trans }}" class="form-control" type="text">
+		<span  class="error"  data-validate-for="email"><div class="arrow-up"></div> {{ 'martinimultimedia.contact::lang.contactform.email_placeholder'|trans }}</span>
 	</div>
 {% if (is_phone_requested) %}
 	<div class="form-group">
 		<label for="phone">{{ "martinimultimedia.contact::lang.contactform.phone"|trans }}</label>
-		<input id="phone" name="email" placeholder="+39..." class="form-control"type="text">
-		<span  class="error"  data-validate-for="email">Insert your phone number</span>
+		<input id="phone" name="email" placeholder="{{ 'martinimultimedia.contact::lang.contactform.phone_placeholder'|trans }}" class="form-control" type="text">
+		<span  class="error"  data-validate-for="email"><div class="arrow-up"></div> {{ 'martinimultimedia.contact::lang.contactform.phone_placeholder'|trans }}</span>
 	</div>
 {% endif %}
 
 
 
 	<div class="form-group">
-		<label for="message">Message</label>
-		<textarea id="message" name="message" class="form-control" rows="3"></textarea>
-		<span  class="error" data-validate-for="message">Insert your phone number</span>
+		<label for="message">{{ "martinimultimedia.contact::lang.contactform.message"|trans }}</label>
+		<textarea id="message" name="message" placeholder="{{ 'martinimultimedia.contact::lang.contactform.message_placeholder'|trans }}" class="form-control" rows="3"></textarea>
+		<span  class="error" data-validate-for="message"><div class="arrow-up"></div> {{ 'martinimultimedia.contact::lang.contactform.message_placeholder'|trans }}</span>
 	</div>
 
 {% if (is_gdpr_enabled) %}
 <div class="form-group">
+{% if settings.txt_gdpr %}
 {{ settings.txt_gdpr}}
+{% else %}
+{{ 'martinimultimedia.contact::lang.settings.txt_gdpr_default'|trans }}
+{% endif %}
 </div>
 <div class="form-group">
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="gdpr">
-    <label name="gdpr" class="form-check-label" for="gdpr">{{ settings.txt_contact|raw }}</label>
+    <label name="gdpr" class="form-check-label" for="gdpr">
+		{% if settings.txt_contact %}
+		{{ settings.txt_contact|raw }}
+		{% else %}
+		{{ 'martinimultimedia.contact::lang.settings.txt_contact_default'|trans }}
+		{% endif %}
+		</label>
+				<span  class="error" data-validate-for="message"><div class="arrow-up"></div> {{ 'martinimultimedia.contact::lang.settings.txt_contact_error'|trans }}</span>
+
   </div>
 	{% if (enable_gdpr_promo) %}
   <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="marketing">
-    <label name="marketing" class="form-check-label" for="marketing">{{ settings.txt_promo|raw }}</label>
+    <input type="checkbox" class="form-check-input" id="promo">
+    <label name="promo" class="form-check-label" for="promo">
+			{% if settings.txt_promo %}
+		{{ settings.txt_promo|raw }}
+		{% else %}
+		{{ 'martinimultimedia.contact::lang.settings.txt_promo_default'|trans }}
+		{% endif %}
+		</label>
   </div>
 	{% endif %}
 	{% if (enable_gdpr_third) %}
   <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="newsletter">
-    <label name="newsletter" class="form-check-label" for="newsletter">{{ settings.txt_third_parties|raw }}</label>
+    <input type="checkbox" class="form-check-input" id="third_parties">
+    <label name="third_parties" class="form-check-label" for="third_parties">
+		{% if settings.txt_third_parties %}
+		{{ settings.txt_third_parties|raw }}
+		{% else %}
+		{{ 'martinimultimedia.contact::lang.settings.txt_third_parties_default'|trans }}
+		{% endif %}
+		</label>
   </div>
 	{% endif %}
 </div>
