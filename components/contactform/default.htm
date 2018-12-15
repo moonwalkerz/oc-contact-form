@@ -5,18 +5,18 @@
 
 <form data-request="contactform::onSend"  data-request-validate data-request-flash>
 	<div class="form-group">
-		<label for="name">	Name </label>
+		<label for="name">{{ "martinimultimedia.contact::lang.contactform.name"|trans }} </label>
 		<input id="name" name="name" placeholder="First & last name" class="form-control" type="text">
 		<span  class="error" data-validate-for="name">Insert your first & last name</span>
 	</div>
 	<div class="form-group">
-		<label for="email">Email address</label>
+		<label for="email">{{ "martinimultimedia.contact::lang.contactform.email"|trans }}</label>
 		<input id="email" name="email" placeholder="your email" class="form-control"type="text">
 		<span  class="error"  data-validate-for="email">Insert your email address</span>
 	</div>
 {% if (is_phone_requested) %}
 	<div class="form-group">
-		<label for="phone">Phone Number</label>
+		<label for="phone">{{ "martinimultimedia.contact::lang.contactform.phone"|trans }}</label>
 		<input id="phone" name="email" placeholder="+39..." class="form-control"type="text">
 		<span  class="error"  data-validate-for="email">Insert your phone number</span>
 	</div>
@@ -37,23 +37,23 @@
 <div class="form-group">
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="gdpr">
-    <label name="gdpr" class="form-check-label" for="gdpr">{{ settings.txt_contact}}</label>
+    <label name="gdpr" class="form-check-label" for="gdpr">{{ settings.txt_contact|raw }}</label>
   </div>
 	{% if (enable_gdpr_promo) %}
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="marketing">
-    <label name="marketing" class="form-check-label" for="marketing">{{ settings.txt_promo}}</label>
+    <label name="marketing" class="form-check-label" for="marketing">{{ settings.txt_promo|raw }}</label>
   </div>
 	{% endif %}
 	{% if (enable_gdpr_third) %}
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="newsletter">
-    <label name="newsletter" class="form-check-label" for="newsletter">{{ settings.txt_third_parties}}</label>
+    <label name="newsletter" class="form-check-label" for="newsletter">{{ settings.txt_third_parties|raw }}</label>
   </div>
 	{% endif %}
 </div>
 {% endif %}
-	<input class="btn btn-primary btn-block" value="Invia" type="submit">
+	<input class="btn btn-colored btn-rounded btn-theme-colored pl-30 pr-30" value="Invia" type="submit">
 </form>
 {% flash success %}
 <div class="alert alert-success alert-dismissible" role="alert">

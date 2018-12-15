@@ -13,3 +13,21 @@ columns:
         type: text
         searchable: true
         sortable: true
+    id:
+        label: id
+        type: number
+    phone:
+        label: phone
+        type: text
+    sw_contact:
+        label: 'Contact'
+        type: partial
+        path: ~/plugins/martinimultimedia/contact/models/contact/_truefalse.htm
+    sw_promo:
+        label: 'Promotions'
+        type: partial
+        path: ~/plugins/martinimultimedia/contact/models/contact/_truefalse.htm
+    sw_third_parties:
+        label: 'Third parties'
+        type: partial
+        path: ~/plugins/martinimultimedia/contact/models/contact/_truefalse.htm

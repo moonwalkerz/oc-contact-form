@@ -18,6 +18,7 @@ class ContactForm extends ComponentBase
 	var $is_gdpr_enabled;
 	var $enable_gdpr_marketing;
 	var $enable_gdpr_newsletter;
+	var $l;
 
 	public function componentDetails(){
 		return [
@@ -82,6 +83,7 @@ class ContactForm extends ComponentBase
 		
 		$this->settings=$this->page['settings'] = Settings::instance();
 		//Log::info('->'.$this->settings);
+	
         $this->is_phone_requested=$this->page['is_phone_requested'] = $this->property('is_phone_requested');
 		$this->is_gdpr_enabled=$this->page['is_gdpr_enabled'] = $this->property('is_gdpr_enabled');
 		$this->enable_gdpr_marketing=$this->page['enable_gdpr_marketing'] = $this->property('enable_gdpr_marketing');
