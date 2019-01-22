@@ -9,7 +9,8 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
     	return [
-    			'MartiniMultimedia\Contact\Components\ContactForm' => 'contactform'
+                'MartiniMultimedia\Contact\Components\ContactForm' => 'contactform',
+                'MartiniMultimedia\Contact\Components\NewsletterForm' => 'newsletterform'
     	];
     }
 

@@ -93,9 +93,6 @@ class ContactForm extends ComponentBase
     }
 
 
-	/*
-
-*/
 	public function onSend()
 	{
 

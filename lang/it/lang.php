@@ -22,6 +22,10 @@
         'promotions' => 'Promozioni',
         'third_parties' => 'Terzi'
     ],
+    'newsletterform' => [
+        'email' =>'Email',
+        'email_placeholder' => 'Inserisci la tua email'
+    ],
     'settings' => [
         'txt_gdpr' =>'Testo generico GDPR',
         'txt_contact' =>'Informativa di contatto',
