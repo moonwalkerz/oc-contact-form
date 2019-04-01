@@ -21,3 +21,10 @@ form.contact .arrow-up {
     
     border-bottom: 5px solid white;
   }
+
+  .form-check {
+      display:flex;
+  }
+  .form-check input {
+      margin-right:2rem;
+  }

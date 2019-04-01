@@ -10,6 +10,7 @@ use Redirect;
 use Flash;
 use MartiniMultimedia\Contact\Models\Contact;
 use MartiniMultimedia\Contact\Models\Settings;
+//use Log;
 
 class ContactForm extends ComponentBase
 {
@@ -96,6 +97,7 @@ class ContactForm extends ComponentBase
 	public function onSend()
 	{
 
+		//Log::info('onsend');
 		
 		$data = post();
 		$rules = [
@@ -115,16 +117,20 @@ class ContactForm extends ComponentBase
 
 
 		if ($validator->fails()){
+			//Log::info('validator fail->'.$validator->messages());
 			throw new ValidationException($validator);
 		} else {
 
-
+			//Log::info('validator ok');
 			$contact=new Contact();
 
 			$contact->name=Input::get('name');
 			$contact->email=Input::get('email');
 			$contact->message=Input::get('message');
 			$contact->phone=Input::get('phone');
+			$contact->gdpr=Input::get('gdpr');
+			$contact->promo=Input::get('promo');
+			$contact->third_parties=Input::get('third_parties');
 			
 			$contact->save();
 
