@@ -1,20 +1,5 @@
 1.0.1:
     - 'Initialize plugin.'
 1.0.2:
-    - 'Created table martinimultimedia_contactform_contacts'
-    - builder_table_create_martinimultimedia_contactform_contacts.php
-1.0.3:
-    - 'Updated table martinimultimedia_contact_contacts'
-    - builder_table_update_martinimultimedia_contact_contacts.php
-1.0.4:
-    - 'Updated table martinimultimedia_contact_contacts'
-    - builder_table_update_martinimultimedia_contact_contacts_2.php
-1.0.5:
-    - 'Updated table martinimultimedia_contact_contacts'
-    - builder_table_update_martinimultimedia_contact_contacts_3.php
-1.0.6:
-    - 'Updated table martinimultimedia_contact_contacts'
-    - builder_table_update_martinimultimedia_contact_contacts_4.php
-1.0.7:
-    - 'Updated table martinimultimedia_contact_contacts'
-    - builder_table_update_martinimultimedia_contact_contacts_5.php
+    - 'Created table martinimultimedia_contact_contacts'
+    - builder_table_create_martinimultimedia_contact_contacts.php

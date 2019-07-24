@@ -128,9 +128,9 @@ class ContactForm extends ComponentBase
 			$contact->email=Input::get('email');
 			$contact->message=Input::get('message');
 			$contact->phone=Input::get('phone');
-			$contact->gdpr=Input::get('gdpr');
-			$contact->promo=Input::get('promo');
-			$contact->third_parties=Input::get('third_parties');
+			$contact->sw_gdpr=Input::get('gdpr')=='on'?1:0;
+			$contact->sw_promo=Input::get('promo')=='on'?1:0;
+			$contact->sw_third_parties=Input::get('third_parties')=='on'?1:0;
 			
 			$contact->save();
 
