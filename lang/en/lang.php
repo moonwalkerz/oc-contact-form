@@ -63,15 +63,15 @@
             'title' => 'Phone mandatory?',
             'description' => 'is phone mandatory?',
         ],
-        'is_gdpr_enabled' => [
+        'is_gdpr_contact_requested' => [
             'title' => 'Enable gdpr checkboxes?',
             'description' => 'enable gdpr checkboxes?',
         ],
-        'enable_gdpr_promo' => [
+        'is_gdpr_promo_requested' => [
             'title' => 'Promotional checkbox?',
             'description' => 'Ask permission to subscribe to a promotional newsletter?',
         ],
-        'enable_gdpr_third' => [
+        'is_gdpr_third_parties_requested' => [
             'title' => 'Third parties checkbox?',
             'description' => 'Ask permission to share information to third parties?',
         ]

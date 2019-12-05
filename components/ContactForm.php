@@ -16,9 +16,9 @@ class ContactForm extends ComponentBase
 {
 	var $settings;
 	var $is_phone_requested;
-	var $is_gdpr_enabled;
-	var $enable_gdpr_marketing;
-	var $enable_gdpr_newsletter;
+	var $is_gdpr_contact_requested;
+	var $is_gdpr_promo_requested;
+	var $is_gdpr_third_parties_requested;
 	var $l;
 
 	public function componentDetails(){
@@ -58,21 +58,21 @@ class ContactForm extends ComponentBase
 				'type' => 'checkbox',
 				'default' => false 
 			],
-			'is_gdpr_enabled' => [
-				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_enabled.title',
-				'description' =>  'martinimultimedia.contact::lang.properties.is_gdpr_enabled.description',
+			'is_gdpr_contact_requested' => [
+				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_contact_requested.title',
+				'description' =>  'martinimultimedia.contact::lang.properties.is_gdpr_contact_requested.description',
 				'type' => 'checkbox',
 				'default' => true 
 			],
-			'enable_gdpr_promo' => [
-				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_promo.title',
-				'description' => 'martinimultimedia.contact::lang.properties.is_gdpr_promo.description',
+			'is_gdpr_promo_requested' => [
+				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_promo_requested.title',
+				'description' => 'martinimultimedia.contact::lang.properties.is_gdpr_promo_requested.description',
 				'type' => 'checkbox',
 				'default' => false 
 			],
-			'enable_gdpr_third' => [
-				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_third.title',
-				'description' => 'martinimultimedia.contact::lang.properties.is_gdpr_third.description',
+			'is_gdpr_third_parties_requested' => [
+				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_third_parties_requested.title',
+				'description' => 'martinimultimedia.contact::lang.properties.is_gdpr_third_parties_requested.description',
 				'type' => 'checkbox',
 				'default' => false 
 			]
@@ -86,10 +86,11 @@ class ContactForm extends ComponentBase
 		$this->settings=$this->page['settings'] = Settings::instance();
 		//Log::info('->'.$this->settings);
 	
-        $this->is_phone_requested=$this->page['is_phone_requested'] = $this->property('is_phone_requested');
-		$this->is_gdpr_enabled=$this->page['is_gdpr_enabled'] = $this->property('is_gdpr_enabled');
-		$this->enable_gdpr_marketing=$this->page['enable_gdpr_marketing'] = $this->property('enable_gdpr_marketing');
-		$this->enable_gdpr_newsletter=$this->page['enable_gdpr_newsletter'] = $this->property('enable_gdpr_newsletter');
+        $this->is_phone_requested             =$this->page['is_phone_requested']              = $this->property('is_phone_requested');
+		$this->is_gdpr_contact_requested      =$this->page['is_gdpr_contact_requested']       = $this->property('is_gdpr_contact_requested');
+		$this->is_gdpr_promo_requested        =$this->page['is_gdpr_promo_requested']         = $this->property('is_gdpr_promo_requested');
+		$this->is_gdpr_third_parties_requested=$this->page['is_gdpr_third_parties_requested'] = $this->property('is_gdpr_third_parties_requested');
+
 
     }
 
@@ -109,8 +110,8 @@ class ContactForm extends ComponentBase
 		if ($this->property('is_phone_mandatory')){
 			$rules['phone']= 'required';
 		}
-		if ($this->property('is_gdpr_enabled')){
-			$rules['gdpr']= 'required';
+		if ($this->property('is_gdpr_contact_requested')){
+			$rules['sw_contact']= 'required';
 		}
 
 		$validator = Validator::make($data,$rules);
@@ -124,13 +125,13 @@ class ContactForm extends ComponentBase
 			//Log::info('validator ok');
 			$contact=new Contact();
 
-			$contact->name=Input::get('name');
-			$contact->email=Input::get('email');
-			$contact->message=Input::get('message');
-			$contact->phone=Input::get('phone');
-			$contact->sw_gdpr=Input::get('gdpr')=='on'?1:0;
-			$contact->sw_promo=Input::get('promo')=='on'?1:0;
-			$contact->sw_third_parties=Input::get('third_parties')=='on'?1:0;
+			$contact->name            =Input::get('name');
+			$contact->email           =Input::get('email');
+			$contact->message         =Input::get('message');
+			$contact->phone           =Input::get('phone');
+			$contact->sw_contact      =Input::get('sw_contact')=='on'?1:0;
+			$contact->sw_promo        =Input::get('sw_promo')=='on'?1:0;
+			$contact->sw_third_parties=Input::get('sw_third_parties')=='on'?1:0;
 			
 			$contact->save();
 

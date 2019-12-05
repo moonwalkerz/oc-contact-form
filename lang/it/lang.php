@@ -61,17 +61,17 @@
             'title' => 'Telefono obbligatorio?',
             'description' => 'è obbligatorio il telefono?',
         ],
-        'is_gdpr_enabled' => [
+        'is_gdpr_contace_requested' => [
             'title' => 'GDPR?',
             'description' => 'Abilito il flag del GDPR?',
         ],
-        'enable_gdpr_promo' => [
+        'is_gdpr_promo_requested' => [
             'title' => 'Promozioni?',
-            'description' => 'Chiedo la possibilità di mandare promozioni o newslette?',
+            'description' => 'Chiedo la possibilità di inviare promozioni o newsletter?',
         ],
-        'enable_gdpr_third' => [
+        'is_gdpr_third_parties_requested' => [
             'title' => 'Terzi?',
-            'description' => 'Chiedo la possibilità di comunicare dati a terzi?',
+            'description' => 'Chiedo la possibilità di comunicare dati del contatto ad aziende terze?',
         ]
     ]
 ];
