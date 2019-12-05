@@ -10,7 +10,6 @@ use Redirect;
 use Flash;
 use MartiniMultimedia\Contact\Models\Contact;
 use MartiniMultimedia\Contact\Models\Settings;
-//use Log;
 
 class ContactForm extends ComponentBase
 {
@@ -84,7 +83,7 @@ class ContactForm extends ComponentBase
 		
 		$this->addCss('assets/css/contact.css');
 		$this->settings=$this->page['settings'] = Settings::instance();
-		//Log::info('->'.$this->settings);
+
 	
         $this->is_phone_requested             =$this->page['is_phone_requested']              = $this->property('is_phone_requested');
 		$this->is_gdpr_contact_requested      =$this->page['is_gdpr_contact_requested']       = $this->property('is_gdpr_contact_requested');
@@ -98,7 +97,7 @@ class ContactForm extends ComponentBase
 	public function onSend()
 	{
 
-		//Log::info('onsend');
+
 		
 		$data = post();
 		$rules = [
@@ -118,11 +117,12 @@ class ContactForm extends ComponentBase
 
 
 		if ($validator->fails()){
-			//Log::info('validator fail->'.$validator->messages());
+
+			Flash::error(trans('martinimultimedia.contact::lang.contactform.error'));
+
 			throw new ValidationException($validator);
 		} else {
 
-			//Log::info('validator ok');
 			$contact=new Contact();
 
 			$contact->name            =Input::get('name');
@@ -153,7 +153,7 @@ class ContactForm extends ComponentBase
 				$message->subject($this->property('subject'));
 				});
 			
-			Flash::success('Messaggio inviato');
+			Flash::success(trans('martinimultimedia.contact::lang.contactform.message_sent'));
 			return Redirect::back();
 
 		}

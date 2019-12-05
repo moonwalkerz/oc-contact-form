@@ -20,7 +20,10 @@
         'date' => 'Data',
         'contact' => 'Contattabile',
         'promotions' => 'Promozioni',
-        'third_parties' => 'Terzi'
+        'third_parties' => 'Terzi',
+        'subscription_sent' => 'Iscrizione inviata!',
+        'message_sent' => 'Messaggio inviato!',
+        'error' => 'Errore di invio, riprova più tardi'
     ],
     'newsletterform' => [
         'email' =>'Email',

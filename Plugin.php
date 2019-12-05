@@ -13,6 +13,13 @@ class Plugin extends PluginBase
                 'MartiniMultimedia\Contact\Components\NewsletterForm' => 'newsletterform'
     	];
     }
+    public function registerPageSnippets()
+    {
+        return [
+            'MartiniMultimedia\Contact\Components\ContactForm' => 'contactform',
+            'MartiniMultimedia\Contact\Components\NewsletterForm' => 'newsletterform'
+        ];        
+    }   
 
     /**
      * Registers any back-end settings.

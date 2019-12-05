@@ -20,7 +20,10 @@
         'date' => 'Date',
         'contact' => 'Contact?',
         'promotions' => 'Promo?',
-        'third_parties' => 'Third parties?'
+        'third_parties' => 'Third parties?',
+        'subscription_sent' => 'Registration sent',
+        'message_sent' => 'Message sent!',
+        'error' => 'Sending Error, try again later.'
     ],
     'newsletterform' => [
         'email' =>'Email',

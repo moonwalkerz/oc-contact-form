@@ -30,7 +30,6 @@ class NewsletterForm extends ComponentBase
     public function onSave()
 	{
 
-//		Log::info("onSave -> newsletterform");	
 		$data = post();
 		$rules = [
 			'email'=> 'required|email',
@@ -40,6 +39,7 @@ class NewsletterForm extends ComponentBase
 
 
 		if ($validator->fails()){
+			Flash::error(trans('martinimultimedia.contact::lang.contactform.error'));
 			throw new ValidationException($validator);
 		} else {
 
@@ -49,7 +49,8 @@ class NewsletterForm extends ComponentBase
 			$contact->email=Input::get('email');
 			$contact->save();
 
-			Flash::success('Iscrizione effettuata');
+			Flash::success(trans('martinimultimedia.contact::lang.contactform.subscription_sent'));
+
 			return Redirect::back();
 
 		}
