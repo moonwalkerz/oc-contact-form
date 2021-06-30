@@ -11,18 +11,18 @@ class BuilderTableCreateMartinimultimediaContactContacts extends Migration
         Schema::create('martinimultimedia_contact_contacts', function($table)
         {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-
+            $table->increments('id')->unsigned();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
             $table->string('name', 191)->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->text('message')->nullable();
             $table->string('phone', 191)->nullable();
             $table->boolean('sw_gdpr')->default(1);
             $table->boolean('sw_contact')->default(0);
             $table->boolean('sw_promo')->default(0);
             $table->boolean('sw_third_parties')->default(0);
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            
         });
     }
     
