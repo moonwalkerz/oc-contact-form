@@ -11,23 +11,11 @@ class Settings extends Model
                         ];
 
     // A unique code
-    public $settingsCode = 'martinimultimedia_contact_settings';
+    public $settingsCode = 'moonwalkerz_contact_settings';
 
     // Reference to field configuration
     public $settingsFields = 'fields.yaml';
     
-
-
-
-    /**
-     * @var array Attributes that support translation, if available.
-     */
-    public $translatable = [
-        'txt_gdpr',
-        'txt_contact',
-        'txt_promo',
-        'txt_third_parties'
-    ];
 
     /**
      * 

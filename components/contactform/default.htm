@@ -30,7 +30,6 @@
 	</div>
 
 {% if (is_gdpr_contact_requested) %}
-
 	<div class="form-group">
 		{% if settings.txt_gdpr %}
 		{{ settings.txt_gdpr}}
@@ -43,11 +42,11 @@
 		<div class="form-check">
 			<input type="checkbox" class="form-check-input" id="gdpr" name="sw_contact">
 			<label class="form-check-label" for="gdpr">
-				{% if settings.txt_contact %}
-				{{ settings.txt_contact|raw }}
-				{% else %}
-				{{ 'moonwalkerz.contact::lang.settings.txt_contact_default'|trans }}
-				{% endif %}
+				
+				
+				{{ 'moonwalkerz.contact::lang.settings.txt_contact_text1'|trans }} 
+				{% if settings.company_name %}{{ settings.company_name }}{% else %}{{ 'moonwalkerz.contact::lang.settings.company_name_default'|trans }}{% endif %}
+				{{ 'moonwalkerz.contact::lang.settings.txt_contact_text2'|trans }}				
 				</label>
 				<span  class="error" data-validate-for="message">
 				<div class="arrow-up"></div>{{ 'moonwalkerz.contact::lang.settings.txt_contact_error'|trans }}
@@ -57,11 +56,9 @@
 		<div class="form-check">
 			<input type="checkbox" class="form-check-input" id="promo" name="sw_promo">
 			<label class="form-check-label" for="promo">
-				{% if settings.txt_promo %}
-				{{ settings.txt_promo|raw }}
-				{% else %}
-				{{ 'moonwalkerz.contact::lang.settings.txt_promo_default'|trans }}
-				{% endif %}
+				{{ 'moonwalkerz.contact::lang.settings.txt_promo_text1'|trans }} 
+				{% if settings.company_name %}{{ settings.company_name }}{% else %}{{ 'moonwalkerz.contact::lang.settings.company_name_default'|trans }}{% endif %}
+				{{ 'moonwalkerz.contact::lang.settings.txt_promo_text2'|trans }}				
 				</label>
 		</div>
 	{% endif %}
@@ -69,11 +66,9 @@
 		<div class="form-check">
 			<input type="checkbox" class="form-check-input" id="third_parties" name="sw_third_parties" >
 			<label class="form-check-label" for="third_parties">
-				{% if settings.txt_third_parties %}
-				{{ settings.txt_third_parties|raw }}
-				{% else %}
-				{{ 'moonwalkerz.contact::lang.settings.txt_third_parties_default'|trans }}
-				{% endif %}
+				{{ 'moonwalkerz.contact::lang.settings.txt_third_parties_text1'|trans }} 
+				{% if settings.company_name %}{{ settings.company_name }}{% else %}{{ 'moonwalkerz.contact::lang.settings.company_name_default'|trans }}{% endif %}
+				{{ 'moonwalkerz.contact::lang.settings.txt_third_parties_text2'|trans }}				
 				</label>
 		</div>
 	{% endif %}

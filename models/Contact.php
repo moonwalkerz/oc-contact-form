@@ -21,5 +21,5 @@ class Contact extends Model
      */
     public $timestamps = true;
 
-    public $table = 'martinimultimedia_contact_contacts';
+    public $table = 'moonwalkerz_contact_contacts';
 }
