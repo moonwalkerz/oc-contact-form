@@ -1,4 +1,6 @@
-<?php namespace Moonwalkerz\Contact;
+<?php
+
+namespace Moonwalkerz\Contact;
 
 use System\Classes\PluginBase;
 
@@ -8,18 +10,19 @@ class Plugin extends PluginBase
 
     public function registerComponents()
     {
-    	return [
-                'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
-                'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform'
-    	];
+        return [
+            'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
+            'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
+        ];
     }
+
     public function registerPageSnippets()
     {
         return [
             'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
-            'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform'
-        ];        
-    }   
+            'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
+        ];
+    }
 
     /**
      * Registers any back-end settings.
@@ -30,14 +33,14 @@ class Plugin extends PluginBase
     {
         return [
             'config' => [
-                'label'       => 'moonwalkerz.contact::lang.plugin.name',
+                'label' => 'moonwalkerz.contact::lang.plugin.name',
                 'description' => 'moonwalkerz.contact::lang.plugin.manage_settings',
-                'category'    => 'system::lang.system.categories.cms',
-                'icon'        => 'icon-envelope',
-                'class'       => 'Moonwalkerz\Contact\Models\Settings',
-                'order'       => 500,
-                'keywords'    => 'search',
-                'permissions' => ['moonwalkerz.contact.manage_settings']
+                'category' => 'system::lang.system.categories.cms',
+                'icon' => 'icon-envelope',
+                'class' => 'Moonwalkerz\Contact\Models\Settings',
+                'order' => 500,
+                'keywords' => 'search',
+                'permissions' => ['moonwalkerz.contact.manage_settings'],
             ],
         ];
     }

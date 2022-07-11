@@ -1,21 +1,22 @@
-<?php namespace Moonwalkerz\Contact\Components;
+<?php
+
+namespace Moonwalkerz\Contact\Components;
 
 use Cms\Classes\ComponentBase;
-use Log;
-use Validator;
-use ValidationException;
-use Redirect;
 use Flash;
 use Input;
 use Moonwalkerz\Contact\Models\Contact;
+use Redirect;
+use ValidationException;
+use Validator;
 
 class NewsletterForm extends ComponentBase
 {
     public function componentDetails()
     {
         return [
-            'name'        => 'Newsletter Form',
-            'description' => 'Newsletter Registration Form'
+            'name' => 'Newsletter Form',
+            'description' => 'Newsletter Registration Form',
         ];
     }
 
@@ -24,38 +25,27 @@ class NewsletterForm extends ComponentBase
         return [];
     }
 
-
-
-
     public function onSave()
-	{
+    {
+        $data = post();
+        $rules = [
+            'email' => 'required|email',
+        ];
 
-		$data = post();
-		$rules = [
-			'email'=> 'required|email',
-		];
+        $validator = Validator::make($data, $rules);
 
-		$validator = Validator::make($data,$rules);
+        if ($validator->fails()) {
+            Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
+            throw new ValidationException($validator);
+        } else {
+            $contact = new Contact();
 
+            $contact->email = Input::get('email');
+            $contact->save();
 
-		if ($validator->fails()){
-			Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
-			throw new ValidationException($validator);
-		} else {
+            Flash::success(trans('moonwalkerz.contact::lang.contactform.subscription_sent'));
 
-
-			$contact=new Contact();
-
-			$contact->email=Input::get('email');
-			$contact->save();
-
-			Flash::success(trans('moonwalkerz.contact::lang.contactform.subscription_sent'));
-
-			return Redirect::back();
-
-		}
-
-
-	}
-
+            return Redirect::back();
+        }
+    }
 }

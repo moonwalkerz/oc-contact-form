@@ -76,11 +76,25 @@
 
 {% endif %}
 
+	{% if settings.captcha == 0 %}
+	<input class="btn btn-colored btn-rounded btn-theme-colored pl-30 pr-30" value="{{ 'moonwalkerz.contact::lang.contactform.submit'|trans }}" type="submit">
+	{% else %}
+	<button class="btn btn-colored btn-rounded btn-theme-colored pl-30 pr-30 g-recaptcha" data-sitekey="{{ settings.google_api_key}}" data-callback='onSubmit'>{{ 'moonwalkerz.contact::lang.contactform.submit'|trans }}</button>
 
-	<input class="btn btn-colored btn-rounded btn-theme-colored pl-30 pr-30" value="Invia" type="submit">
+	{% put scripts %}
+	<script>
+
+		function onSubmit(token) {
+		$('form').request("{{__SELF__}}::onSend");
+		}
+	  </script>
+ 
+	{% endput %}
+	{% endif %}
+
 </form>
 {% flash success %}
-<div class="alert alert-success alert-dismissible" role="alert">
+<div class="alert alert-success alert-dismissible" role="alert">	
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">×</span>
 	</button>

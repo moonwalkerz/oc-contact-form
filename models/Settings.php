@@ -1,30 +1,28 @@
-<?php namespace Moonwalkerz\Contact\Models;
+<?php
 
-use Model;
+namespace Moonwalkerz\Contact\Models;
+
 use Cms\Classes\Page;
+use Model;
 
 class Settings extends Model
 {
     public $implement = [
         'System.Behaviors.SettingsModel',
-        '@RainLab.Translate.Behaviors.TranslatableModel'
-                        ];
+        '@RainLab.Translate.Behaviors.TranslatableModel',
+    ];
 
     // A unique code
     public $settingsCode = 'moonwalkerz_contact_settings';
 
     // Reference to field configuration
     public $settingsFields = 'fields.yaml';
-    
 
     /**
-     * 
-     * 
-     *
      * Returns pages list for blog page selection
      *
-     * @param null $keyValue
-     * @param null $fieldName
+     * @param  null  $keyValue
+     * @param  null  $fieldName
      * @return mixed
      */
     public function blogPageOptions($keyValue = null, $fieldName = null)

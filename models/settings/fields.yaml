@@ -5,3 +5,15 @@ fields:
         label: moonwalkerz.contact::lang.settings.company_name
         comment: moonwalkerz.contact::lang.settings.company_name_comment
         default: moonwalkerz.contact::lang.settings.company_name_default
+    captcha:
+        span: auto
+        label: 'moonwalkerz.contact::lang.settings.captcha'
+        type: dropdown
+        options:
+            0: 'moonwalkerz.contact::lang.settings.captcha_none'
+            1: 'moonwalkerz.contact::lang.settings.captcha_recaptcha'
+            2: 'moonwalkerz.contact::lang.settings.captcha_invisible'
+    google_api_key:
+            label: 'moonwalkerz.contact::lang.settings.google_api_key'
+            span: left
+            type: text        
