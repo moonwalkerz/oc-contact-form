@@ -4,7 +4,7 @@ fields:
         type: textarea
         label: moonwalkerz.contact::lang.settings.txt_gdpr
         comment: moonwalkerz.contact::lang.settings.txt_gdpr_comment
-        comment: moonwalkerz.contact::lang.settings.txt_gdpr_default
+        default: moonwalkerz.contact::lang.settings.txt_gdpr_default
     txt_contact:
         span: auto
         type: textarea
