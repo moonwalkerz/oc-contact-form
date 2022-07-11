@@ -2,6 +2,13 @@
 
 A simple contact form with the ability to insert the GDPR privacy policy rules.
 
+## Install
+
+```
+composer require moonwalkerz/oc-contact-plugin
+```
+
+
 You can enable/disable the rules according to you requirements.
 
 Common privacy rule.
