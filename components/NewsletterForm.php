@@ -1,4 +1,4 @@
-<?php namespace Martinimultimedia\Contact\Components;
+<?php namespace Moonwalkerz\Contact\Components;
 
 use Cms\Classes\ComponentBase;
 use Log;
@@ -7,7 +7,7 @@ use ValidationException;
 use Redirect;
 use Flash;
 use Input;
-use MartiniMultimedia\Contact\Models\Contact;
+use Moonwalkerz\Contact\Models\Contact;
 
 class NewsletterForm extends ComponentBase
 {
@@ -39,7 +39,7 @@ class NewsletterForm extends ComponentBase
 
 
 		if ($validator->fails()){
-			Flash::error(trans('martinimultimedia.contact::lang.contactform.error'));
+			Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
 			throw new ValidationException($validator);
 		} else {
 
@@ -49,7 +49,7 @@ class NewsletterForm extends ComponentBase
 			$contact->email=Input::get('email');
 			$contact->save();
 
-			Flash::success(trans('martinimultimedia.contact::lang.contactform.subscription_sent'));
+			Flash::success(trans('moonwalkerz.contact::lang.contactform.subscription_sent'));
 
 			return Redirect::back();
 

@@ -1,14 +1,14 @@
-<?php namespace MartiniMultimedia\Contact\Updates;
+<?php namespace Moonwalkerz\Contact\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableCreateMartinimultimediaContactContacts extends Migration
+class BuilderTableCreateMoonwalkerzContactContacts extends Migration
 {
     public function up()
     {
-        Schema::dropIfExists('martinimultimedia_contact_contacts');
-        Schema::create('martinimultimedia_contact_contacts', function($table)
+        Schema::dropIfExists('moonwalkerz_contact_contacts');
+        Schema::create('moonwalkerz_contact_contacts', function($table)
         {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
@@ -28,6 +28,6 @@ class BuilderTableCreateMartinimultimediaContactContacts extends Migration
     
     public function down()
     {
-        Schema::dropIfExists('martinimultimedia_contact_contacts');
+        Schema::dropIfExists('moonwalkerz_contact_contacts');
     }
 }

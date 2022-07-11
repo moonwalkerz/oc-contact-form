@@ -1,8 +1,8 @@
 <form class="newsletter" data-request="{{__SELF__}}::onSave"  data-request-validate data-request-flash>
 	<div class="form-group">
-		<label for="email">{{ "martinimultimedia.contact::lang.newsletterform.email"|trans }}</label>
-		<input id="email" name="email" placeholder="{{ 'martinimultimedia.contact::lang.newsletterform.email_placeholder'|trans }}" class="form-control" type="text">
-		<span  class="error"  data-validate-for="email"><div class="arrow-up"></div> {{ 'martinimultimedia.contact::lang.newsletterform.email_placeholder'|trans }}</span>
+		<label for="email">{{ "moonwalkerz.contact::lang.newsletterform.email"|trans }}</label>
+		<input id="email" name="email" placeholder="{{ 'moonwalkerz.contact::lang.newsletterform.email_placeholder'|trans }}" class="form-control" type="text">
+		<span  class="error"  data-validate-for="email"><div class="arrow-up"></div> {{ 'moonwalkerz.contact::lang.newsletterform.email_placeholder'|trans }}</span>
 	</div>
    
   <div class="form-check">
@@ -11,7 +11,7 @@
 			{% if settings.txt_promo %}
 		{{ settings.txt_promo|raw }}
 		{% else %}
-		{{ 'martinimultimedia.contact::lang.settings.txt_promo_default'|trans }}
+		{{ 'moonwalkerz.contact::lang.settings.txt_promo_default'|trans }}
 		{% endif %}
 		</label>
   </div>

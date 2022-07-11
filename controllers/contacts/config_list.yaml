@@ -1,5 +1,5 @@
-list: $/martinimultimedia/contact/models/contact/columns.yaml
-modelClass: MartiniMultimedia\Contact\Models\Contact
+list: $/moonwalkerz/contact/models/contact/columns.yaml
+modelClass: Moonwalkerz\Contact\Models\Contact
 title: Contacts
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
@@ -8,4 +8,4 @@ toolbar:
     buttons: list_toolbar
     search:
         prompt: 'backend::lang.list.search_prompt'
-recordUrl: 'martinimultimedia/contact/contacts/update/:id'
+recordUrl: 'moonwalkerz/contact/contacts/update/:id'

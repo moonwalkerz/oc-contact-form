@@ -1,5 +1,5 @@
 <?php
-namespace MartiniMultimedia\Contact\Components;
+namespace Moonwalkerz\Contact\Components;
 
 use Cms\Classes\ComponentBase;
 use Input;
@@ -8,8 +8,8 @@ use Validator;
 use ValidationException;
 use Redirect;
 use Flash;
-use MartiniMultimedia\Contact\Models\Contact;
-use MartiniMultimedia\Contact\Models\Settings;
+use Moonwalkerz\Contact\Models\Contact;
+use Moonwalkerz\Contact\Models\Settings;
 
 class ContactForm extends ComponentBase
 {
@@ -31,47 +31,47 @@ class ContactForm extends ComponentBase
 	public function defineProperties() {
 		return [
 			'emailto' => [
-				'title' =>  'martinimultimedia.contact::lang.properties.emailto',
-				'description' => 'martinimultimedia.contact::lang.properties.emailto_desc',
+				'title' =>  'moonwalkerz.contact::lang.properties.emailto',
+				'description' => 'moonwalkerz.contact::lang.properties.emailto_desc',
 				'default' => 'info@example.com'
 			],
 			'emailtoname' => [
-				'title' => 'martinimultimedia.contact::lang.properties.emailtoname',
-				'description' => 'martinimultimedia.contact::lang.properties.emailtoname_desc',
+				'title' => 'moonwalkerz.contact::lang.properties.emailtoname',
+				'description' => 'moonwalkerz.contact::lang.properties.emailtoname_desc',
 				'default' => 'Administrator'
 			],
 			'subject' => [
-				'title' => 'martinimultimedia.contact::lang.properties.subject',
-				'description' => 'martinimultimedia.contact::lang.properties.subject_desc',
+				'title' => 'moonwalkerz.contact::lang.properties.subject',
+				'description' => 'moonwalkerz.contact::lang.properties.subject_desc',
 				'default' => 'Message from website' 
 			],
 			'is_phone_requested' => [
-				'title' => 'martinimultimedia.contact::lang.properties.is_phone_requested.title',
-				'description' => 'martinimultimedia.contact::lang.properties.is_phone_requested.description',
+				'title' => 'moonwalkerz.contact::lang.properties.is_phone_requested.title',
+				'description' => 'moonwalkerz.contact::lang.properties.is_phone_requested.description',
 				'type' => 'checkbox',
 				'default' => false 
 			],
 			'is_phone_mandatory' => [
-				'title' =>  'martinimultimedia.contact::lang.properties.is_phone_mandatory.title',
-				'description' => 'martinimultimedia.contact::lang.properties.is_phone_mandatory.description',
+				'title' =>  'moonwalkerz.contact::lang.properties.is_phone_mandatory.title',
+				'description' => 'moonwalkerz.contact::lang.properties.is_phone_mandatory.description',
 				'type' => 'checkbox',
 				'default' => false 
 			],
 			'is_gdpr_contact_requested' => [
-				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_contact_requested.title',
-				'description' =>  'martinimultimedia.contact::lang.properties.is_gdpr_contact_requested.description',
+				'title' => 'moonwalkerz.contact::lang.properties.is_gdpr_contact_requested.title',
+				'description' =>  'moonwalkerz.contact::lang.properties.is_gdpr_contact_requested.description',
 				'type' => 'checkbox',
 				'default' => true 
 			],
 			'is_gdpr_promo_requested' => [
-				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_promo_requested.title',
-				'description' => 'martinimultimedia.contact::lang.properties.is_gdpr_promo_requested.description',
+				'title' => 'moonwalkerz.contact::lang.properties.is_gdpr_promo_requested.title',
+				'description' => 'moonwalkerz.contact::lang.properties.is_gdpr_promo_requested.description',
 				'type' => 'checkbox',
 				'default' => false 
 			],
 			'is_gdpr_third_parties_requested' => [
-				'title' => 'martinimultimedia.contact::lang.properties.is_gdpr_third_parties_requested.title',
-				'description' => 'martinimultimedia.contact::lang.properties.is_gdpr_third_parties_requested.description',
+				'title' => 'moonwalkerz.contact::lang.properties.is_gdpr_third_parties_requested.title',
+				'description' => 'moonwalkerz.contact::lang.properties.is_gdpr_third_parties_requested.description',
 				'type' => 'checkbox',
 				'default' => false 
 			]
@@ -118,7 +118,7 @@ class ContactForm extends ComponentBase
 
 		if ($validator->fails()){
 
-			Flash::error(trans('martinimultimedia.contact::lang.contactform.error'));
+			Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
 
 			throw new ValidationException($validator);
 		} else {
@@ -147,13 +147,13 @@ class ContactForm extends ComponentBase
 			"An exception has been thrown during the rendering of a template ("Object of class Illuminate\Mail\Message could not be converted to string") 
 			*/
 
-			Mail::send('martinimultimedia.contact::mail.message',$vars, function ($message) use ($email,$name) {
+			Mail::send('moonwalkerz.contact::mail.message',$vars, function ($message) use ($email,$name) {
 				$message->to($this->property('emailto'),$this->property('emailtoname'));
 				$message->replyTo($email, $name);
 				$message->subject($this->property('subject'));
 				});
 			
-			Flash::success(trans('martinimultimedia.contact::lang.contactform.message_sent'));
+			Flash::success(trans('moonwalkerz.contact::lang.contactform.message_sent'));
 			return Redirect::back();
 
 		}

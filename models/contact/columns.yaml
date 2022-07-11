@@ -1,33 +1,33 @@
 columns:
     email:
-        label: martinimultimedia.contact::lang.contactform.email
+        label: moonwalkerz.contact::lang.contactform.email
         type: text
         searchable: true
         sortable: true
     created_at:
-        label: martinimultimedia.contact::lang.contactform.date
+        label: moonwalkerz.contact::lang.contactform.date
         type: date
         sortable: true
     name:
-        label: martinimultimedia.contact::lang.contactform.name
+        label: moonwalkerz.contact::lang.contactform.name
         type: text
         searchable: true
         sortable: true
     id:
-        label: martinimultimedia.contact::lang.contactform.id
+        label: moonwalkerz.contact::lang.contactform.id
         type: number
     phone:
-        label: martinimultimedia.contact::lang.contactform.phone
+        label: moonwalkerz.contact::lang.contactform.phone
         type: text
     sw_contact:
-        label: martinimultimedia.contact::lang.contactform.contact
+        label: moonwalkerz.contact::lang.contactform.contact
         type: partial
-        path: ~/plugins/martinimultimedia/contact/models/contact/_truefalse.htm
+        path: ~/plugins/moonwalkerz/contact/models/contact/_truefalse.htm
     sw_promo:
-        label: martinimultimedia.contact::lang.contactform.promotions
+        label: moonwalkerz.contact::lang.contactform.promotions
         type: partial
-        path: ~/plugins/martinimultimedia/contact/models/contact/_truefalse.htm
+        path: ~/plugins/moonwalkerz/contact/models/contact/_truefalse.htm
     sw_third_parties:
-        label: martinimultimedia.contact::lang.contactform.third_parties
+        label: moonwalkerz.contact::lang.contactform.third_parties
         type: partial
-        path: ~/plugins/martinimultimedia/contact/models/contact/_truefalse.htm
+        path: ~/plugins/moonwalkerz/contact/models/contact/_truefalse.htm

@@ -1,4 +1,4 @@
-<?php namespace MartiniMultimedia\Contact\Controllers;
+<?php namespace Moonwalkerz\Contact\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
@@ -14,6 +14,6 @@ class Contacts extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('MartiniMultimedia.Contact', 'contacts');
+        BackendMenu::setContext('moonwalkerz.contact', 'contacts');
     }
 }

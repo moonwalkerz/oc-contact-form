@@ -1,8 +1,8 @@
 {
-    "name": "martinimultimedia/contact-plugin",
+    "name": "moonwalkerz/oc-contact-plugin",
     "type": "october-plugin",
     "description": "Simple Contact Form GDPR compliant",
-    "homepage": "https://github.com/inalto/oc-contact",
+    "homepage": "https://github.com/moonwalkerz/oc-contact",
     "keywords": ["october", "octobercms", "translate"],
     "license": "MIT",
     "authors": [
@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": "^8.0",
         "composer/installers": "~1.0",
 	"rainlab/translate": ">=1.9"
     },

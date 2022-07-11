@@ -1,4 +1,4 @@
-<?php namespace MartiniMultimedia\Contact;
+<?php namespace Moonwalkerz\Contact;
 
 use System\Classes\PluginBase;
 
@@ -9,15 +9,15 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
     	return [
-                'MartiniMultimedia\Contact\Components\ContactForm' => 'contactform',
-                'MartiniMultimedia\Contact\Components\NewsletterForm' => 'newsletterform'
+                'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
+                'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform'
     	];
     }
     public function registerPageSnippets()
     {
         return [
-            'MartiniMultimedia\Contact\Components\ContactForm' => 'contactform',
-            'MartiniMultimedia\Contact\Components\NewsletterForm' => 'newsletterform'
+            'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
+            'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform'
         ];        
     }   
 
@@ -30,14 +30,14 @@ class Plugin extends PluginBase
     {
         return [
             'config' => [
-                'label'       => 'martinimultimedia.contact::lang.plugin.name',
-                'description' => 'martinimultimedia.contact::lang.plugin.manage_settings',
+                'label'       => 'moonwalkerz.contact::lang.plugin.name',
+                'description' => 'moonwalkerz.contact::lang.plugin.manage_settings',
                 'category'    => 'system::lang.system.categories.cms',
                 'icon'        => 'icon-envelope',
-                'class'       => 'MartiniMultimedia\Contact\Models\Settings',
+                'class'       => 'Moonwalkerz\Contact\Models\Settings',
                 'order'       => 500,
                 'keywords'    => 'search',
-                'permissions' => ['martinimultimedia.contact.manage_settings']
+                'permissions' => ['moonwalkerz.contact.manage_settings']
             ],
         ];
     }

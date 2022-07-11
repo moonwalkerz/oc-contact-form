@@ -2,24 +2,24 @@ fields:
     txt_gdpr:
         span: auto
         type: textarea
-        label: martinimultimedia.contact::lang.settings.txt_gdpr
-        comment: martinimultimedia.contact::lang.settings.txt_gdpr_comment
-        comment: martinimultimedia.contact::lang.settings.txt_gdpr_default
+        label: moonwalkerz.contact::lang.settings.txt_gdpr
+        comment: moonwalkerz.contact::lang.settings.txt_gdpr_comment
+        comment: moonwalkerz.contact::lang.settings.txt_gdpr_default
     txt_contact:
         span: auto
         type: textarea
-        label: martinimultimedia.contact::lang.settings.txt_contact
-        comment: martinimultimedia.contact::lang.settings.txt_contact_comment
-        default: martinimultimedia.contact::lang.settings.txt_contact_default
+        label: moonwalkerz.contact::lang.settings.txt_contact
+        comment: moonwalkerz.contact::lang.settings.txt_contact_comment
+        default: moonwalkerz.contact::lang.settings.txt_contact_default
     txt_promo:
         span: auto
         type: textarea
-        label: martinimultimedia.contact::lang.settings.txt_promo
-        comment: martinimultimedia.contact::lang.settings.txt_promo_comment
-        default: martinimultimedia.contact::lang.settings.txt_promo_default
+        label: moonwalkerz.contact::lang.settings.txt_promo
+        comment: moonwalkerz.contact::lang.settings.txt_promo_comment
+        default: moonwalkerz.contact::lang.settings.txt_promo_default
     txt_third_parties:
         span: auto
         type: textarea
-        label: martinimultimedia.contact::lang.settings.txt_third_parties
-        comment: martinimultimedia.contact::lang.settings.txt_third_parties_comment
-        default: martinimultimedia.contact::lang.settings.txt_third_parties_default
+        label: moonwalkerz.contact::lang.settings.txt_third_parties
+        comment: moonwalkerz.contact::lang.settings.txt_third_parties_comment
+        default: moonwalkerz.contact::lang.settings.txt_third_parties_default

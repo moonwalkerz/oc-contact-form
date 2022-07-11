@@ -1,11 +1,11 @@
 plugin:
-    name: 'martinimultimedia.contact::lang.plugin.name'
-    description: 'martinimultimedia.contact::lang.plugin.description'
+    name: 'moonwalkerz.contact::lang.plugin.name'
+    description: 'moonwalkerz.contact::lang.plugin.description'
     author: 'Martini Multimedia'
     icon: oc-icon-envelope
     homepage: ''
 navigation:
     contacts:
         label: Contatti
-        url: martinimultimedia/contact/contacts
+        url: moonwalkerz/contact/contacts
         icon: icon-envelope-o

@@ -1,4 +1,4 @@
-<?php namespace MartiniMultimedia\Contact\Models;
+<?php namespace Moonwalkerz\Contact\Models;
 
 use Model;
 use Cms\Classes\Page;
