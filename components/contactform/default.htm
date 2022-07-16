@@ -1,32 +1,27 @@
-{% put styles %}
-<style>.error {display:none}</style>
-{% endput %}
-
-
 <form class="contact" data-request="{{__SELF__}}::onSend"  data-request-validate data-request-flash>
 	<div class="form-group">
 		<label for="name">{{ "moonwalkerz.contact::lang.contactform.name"|trans }} </label>
 		<input id="name" name="name" placeholder="{{ 'moonwalkerz.contact::lang.contactform.name_placeholder'|trans }}" class="form-control" type="text">
-		<span  class="error" data-validate-for="name"><div class="arrow-up"></div> {{ 'moonwalkerz.contact::lang.contactform.name_placeholder'|trans }}</span>
+		<div  class="text-danger" data-validate-for="name"> {{ 'moonwalkerz.contact::lang.contactform.name_placeholder'|trans }}</div>
 	</div>
 	<div class="form-group">
 		<label for="email">{{ "moonwalkerz.contact::lang.contactform.email"|trans }}</label>
 		<input id="email" name="email" placeholder="{{ 'moonwalkerz.contact::lang.contactform.email_placeholder'|trans }}" class="form-control" type="text">
-		<span  class="error"  data-validate-for="email"><div class="arrow-up"></div> {{ 'moonwalkerz.contact::lang.contactform.email_placeholder'|trans }}</span>
+		<div class="text-danger" data-validate-for="email">{{ 'moonwalkerz.contact::lang.contactform.email_placeholder'|trans }}</div>
 	</div>
 
 {% if (is_phone_requested) %}
 	<div class="form-group">
 		<label for="phone">{{ "moonwalkerz.contact::lang.contactform.phone"|trans }}</label>
 		<input id="phone" name="phone" placeholder="{{ 'moonwalkerz.contact::lang.contactform.phone_placeholder'|trans }}" class="form-control" type="text">
-		<span  class="error"  data-validate-for="email"><div class="arrow-up"></div> {{ 'moonwalkerz.contact::lang.contactform.phone_placeholder'|trans }}</span>
+		<div  class="text-danger" data-validate-for="phone">{{ 'moonwalkerz.contact::lang.contactform.phone_placeholder'|trans }}</div>
 	</div>
 {% endif %}
 
 	<div class="form-group">
 		<label for="message">{{ "moonwalkerz.contact::lang.contactform.message"|trans }}</label>
 		<textarea id="message" name="message" placeholder="{{ 'moonwalkerz.contact::lang.contactform.message_placeholder'|trans }}" class="form-control" rows="3"></textarea>
-		<span  class="error" data-validate-for="message"><div class="arrow-up"></div> {{ 'moonwalkerz.contact::lang.contactform.message_placeholder'|trans }}</span>
+		<div  class="text-danger"  data-validate-for="message">{{ 'moonwalkerz.contact::lang.contactform.message_placeholder'|trans }}</div>
 	</div>
 
 {% if (is_gdpr_contact_requested) %}
@@ -41,16 +36,14 @@
 	<div class="form-group">
 		<div class="form-check">
 			<input type="checkbox" class="form-check-input" id="gdpr" name="sw_contact">
-			<label class="form-check-label" for="gdpr">
-				
-				
+			<label class="form-check-label" for="gdpr">	
 				{{ 'moonwalkerz.contact::lang.settings.txt_contact_text1'|trans }} 
 				{% if settings.company_name %}{{ settings.company_name }}{% else %}{{ 'moonwalkerz.contact::lang.settings.company_name_default'|trans }}{% endif %}
 				{{ 'moonwalkerz.contact::lang.settings.txt_contact_text2'|trans }}				
 				</label>
-				<span  class="error" data-validate-for="message">
-				<div class="arrow-up"></div>{{ 'moonwalkerz.contact::lang.settings.txt_contact_error'|trans }}
-				</span>
+				<div class="text-danger"  data-validate-for="sw_contact">
+				{{ 'moonwalkerz.contact::lang.settings.txt_contact_error'|trans }}
+				</div>
 		</div>
 	{% if (is_gdpr_promo_requested) %}
 		<div class="form-check">

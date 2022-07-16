@@ -88,7 +88,7 @@ class ContactForm extends ComponentBase
 
     public function onRun()
     {
-        $this->addCss('assets/css/contact.css');
+        
         $this->settings = $this->page['settings'] = Settings::instance();
 
         if ($this->settings->captcha) {
