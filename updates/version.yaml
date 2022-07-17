@@ -3,3 +3,12 @@
 1.0.2:
     - 'Created table moonwalkerz_contact_contacts'
     - builder_table_create_moonwalkerz_contact_contacts.php
+1.0.3:
+    - 'Refactoring to moonwalkerz'
+1.0.4:
+    - 'Added captchas'
+1.0.5:
+    - 'Newsletter form additions and fixes'
+1.0.6:
+    - 'Created table moonwalkerz_contact_subscribers'
+    - builder_table_create_moonwalkerz_contact_subscribers.php

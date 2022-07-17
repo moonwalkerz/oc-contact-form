@@ -1,0 +1,30 @@
+columns:
+    id:
+        label: id
+        type: number
+        invisible: true
+    created_at:
+        label: moonwalkerz.contact::lang.plugin.created_at
+        type: datetime
+        invisible: false
+        sortable: true
+    updated_at:
+        label: moonwalkerz.contact::lang.plugin.updated_at
+        type: datetime
+        invisible: true
+    email:
+        label: moonwalkerz.contact::lang.contactform.email
+        type: text
+        sortable: true
+    sw_contact:
+        label:  moonwalkerz.contact::lang.plugin.sw_contact
+        type: switch
+        sortable: true
+    sw_promo:
+        label: moonwalkerz.contact::lang.plugin.sw_promo
+        type: switch
+        sortable: true
+    sw_third_parties:
+        label: moonwalkerz.contact::lang.plugin.sw_third_parties
+        type: switch
+        sortable: true

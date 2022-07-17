@@ -18,6 +18,6 @@ class Contacts extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('moonwalkerz.contact', 'contacts');
+        BackendMenu::setContext('Moonwalkerz.Contact', 'contacts', 'side-contacts');
     }
 }

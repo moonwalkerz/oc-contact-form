@@ -1,18 +1,18 @@
 fields:
     name:
-        label: 'Nome e Cognome'
+        label: moonwalkerz.contact::lang.contactform.name
         span: full
         type: text
     phone:
-        label: Telefono
+        label: moonwalkerz.contact::lang.contactform.phone
         span: auto
         type: text
     email:
-        label: e-mail
+        label: moonwalkerz.contact::lang.contactform.email
         span: auto
         type: text
     message:
-        label: Message
+        label: moonwalkerz.contact::lang.contactform.message
         size: large
         span: full
         type: textarea

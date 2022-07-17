@@ -1,0 +1,21 @@
+fields:
+    created_at:
+        label: moonwalkerz.contact::lang.plugin.created_at
+        span: auto
+        type: datepicker
+    email:
+        label: moonwalkerz.contact::lang.contactform.email
+        span: auto
+        type: text
+    sw_contact:
+        label: moonwalkerz.contact::lang.plugin.sw_contact
+        span: auto
+        type: checkbox
+    sw_promo:
+        label: moonwalkerz.contact::lang.plugin.sw_promo
+        span: auto
+        type: checkbox
+    sw_third_parties:
+        label: moonwalkerz.contact::lang.plugin.sw_third_parties
+        span: auto
+        type: checkbox

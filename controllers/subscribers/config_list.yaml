@@ -1,0 +1,12 @@
+list: $/moonwalkerz/contact/models/subsciber/columns.yaml
+modelClass: Moonwalkerz\Contact\Models\Subsciber
+title: Subscribers
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'moonwalkerz/contact/subscribers/update/:id'

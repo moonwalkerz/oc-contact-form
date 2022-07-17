@@ -70,9 +70,9 @@
 {% endif %}
 
 	{% if settings.captcha == 0 %}
-	<input class="btn btn-colored btn-rounded btn-theme-colored pl-30 pr-30" value="{{ 'moonwalkerz.contact::lang.contactform.submit'|trans }}" type="submit">
+	<input class="btn btn-colored btn-block btn-rounded btn-theme-colored pl-30 pr-30" value="{{ 'moonwalkerz.contact::lang.contactform.submit'|trans }}" type="submit">
 	{% elseif settings.captcha == 1 %}
-	<button class="btn btn-colored btn-rounded btn-theme-colored pl-30 pr-30 g-recaptcha" data-sitekey="{{ settings.google_api_key}}" data-callback='onSubmit'>{{ 'moonwalkerz.contact::lang.contactform.submit'|trans }}</button>
+	<button class="btn btn-colored btn-block btn-rounded btn-theme-colored pl-30 pr-30 g-recaptcha" data-sitekey="{{ settings.google_api_key}}" data-callback='onSubmit'>{{ 'moonwalkerz.contact::lang.contactform.submit'|trans }}</button>
 	{% put scripts %}
 	<script>
 
