@@ -25,13 +25,15 @@ php artisan plugin:install RainLab.Translate
 ```
 
 ## Install
-Youu can install this plugin with this command:
+You can install this plugin with this command:
 
 ```
 composer require moonwalkerz/oc-contact-plugin
 ```
 
-## Documentation 
+## Documentation
+
+Documentation is coming soon
 
 ## Contact Us
 
