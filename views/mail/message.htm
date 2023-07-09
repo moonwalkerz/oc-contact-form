@@ -1,5 +1,34 @@
-<p>Hai ricevuto un messaggio da {{ name }} </p>
+name = "Contact"
+subject = "Message from website"
+description = "The message you receive from the website"
+==
+You received a message from {{ name }}
+
+Email: {{ email }}
+Phone: {{ phone }}
+
+{{ message}}
+
+Allow to be contacted? {{allow_contact}}
+Allow to receive promo content? {{allow_promo}}
+Allow to share contact to third parties? {{allow_third_parties}}
+
+==
+<p>You received a message from {{ name }} </p>
+
 
 <p>
-{{ msg }}
+Email :{{ email }}
 </p>
+<p>
+Phone: {{ phone }}
+</p>
+<p>
+{{ message}}
+</p>
+
+<ul>
+<li>Allow to be contacted? {{allow_contact}}</li>
+<li>Allow to receive promo content? {{allow_promo}}</li>
+<li>Allow to share contact to third parties? {{allow_third_parties}}</li>
+</ul>

@@ -140,10 +140,13 @@ class ContactForm extends ComponentBase
             $contact->save();
 
             $vars = [
-                'name' => Input::get('name'),
-                'phone' => Input::get('phone'),
-                'email' => Input::get('email'),
-                'msg' => Input::get('message'),
+                'name' => $contact->name,
+                'email' => $contact->email,
+                'message' => $contact->message,
+                'phone' => $contact->phone,
+                'allow_contact' => Input::get('sw_contact') == 'on' ? 'yes' : 'no',
+                'allow_promo' => Input::get('sw_promo') == 'on' ? 'yes' : 'no',
+                'allow_third_parties' => Input::get('sw_third_parties') == 'on' ? 'yes' : 'no'
             ];
             $email = Input::get('email');
             $name = Input::get('name');

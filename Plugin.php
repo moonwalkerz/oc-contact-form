@@ -3,6 +3,7 @@
 namespace Moonwalkerz\Contact;
 
 use System\Classes\PluginBase;
+use System\Classes\MailManager;
 
 class Plugin extends PluginBase
 {
@@ -22,6 +23,18 @@ class Plugin extends PluginBase
             'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
             'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
         ];
+    }
+
+    /**
+     * registerMailer templates
+     */
+    public function register()
+    {
+        MailManager::registerCallback(function ($manager) {
+            $manager->registerMailTemplates([
+                'moonwalkerz.contact::mail.message',
+            ]);
+        });
     }
 
     /**
