@@ -22,7 +22,8 @@
         },
         "config": {
             "allow-plugins": {
-              "composer/installers": true
+              "composer/installers": true,
+	      "rainlab/translate-plugin": true
             }
           }
 }
