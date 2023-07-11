@@ -16,14 +16,13 @@
       }
     ],
     "require": {
-        "php": "^8.0",
-        "rainlab/translate-plugin": ">=1.9",
-        "composer/installers": "~1.0"
-        },
+        "composer/installers": "~1.0",
+        "php": ">=8.0",
+        "rainlab/translate-plugin": ">=1.9"
+    },
         "config": {
             "allow-plugins": {
-              "composer/installers": true,
-	      "rainlab/translate-plugin": true
+              "composer/installers": true
             }
           }
 }
