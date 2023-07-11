@@ -1,8 +1,8 @@
 {
-    "name": "moonwalkerz/contact-form-plugin",
+    "name": "moonwalkerz/contact-plugin",
     "type": "october-plugin",
     "description": "Just a simple Contact Form plugin for October CMS",
-    "homepage": "https://github.com/moonwalkerz/oc-contact",
+    "homepage": "https://github.com/moonwalkerz/oc-contact-form.git",
     "keywords": ["october", "cms","contactform", "plugin"],
     "license": "MIT",
     "authors": [
