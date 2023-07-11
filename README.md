@@ -33,7 +33,20 @@ composer require moonwalkerz/oc-contact-plugin
 
 ## ⚙️ Documentation ⚙️
 
-Documentation is coming soon
+Using this plugin is really simple. Before using it, you need to follow these steps:
+
+1) Set up the email settings in October CMS backend, under Settings > Mail Configuration.
+2) Set up the Contacts settings in October CMS backend, under Settings > Contacts. In this section, you can insert the company name, which will be used to autocomplete the GDPR checkbox. You can also set the CAPTCHA, and if you use Google, you can insert the Google Key.
+
+ow, you can insert the component in your page. You can set additional custom settings, such as:
+- Email destination address
+- Name of email sender
+- Email subject
+- add phone field
+- set phone field mandatory
+- GDPR checkbox
+
+This plugin creates a new default mail template. If you need to customize it, you can find it in Settings > Mail Templates > moonwalkerz.contact::mail.message
 
 ## 🤑 Support Us 🤑
 
