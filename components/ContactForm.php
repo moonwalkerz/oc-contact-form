@@ -142,7 +142,7 @@ class ContactForm extends ComponentBase
             $vars = [
                 'name' => $contact->name,
                 'email' => $contact->email,
-                'message' => $contact->message,
+                'msg' => $contact->message,
                 'phone' => $contact->phone,
                 'allow_contact' => Input::get('sw_contact') == 'on' ? 'yes' : 'no',
                 'allow_promo' => Input::get('sw_promo') == 'on' ? 'yes' : 'no',

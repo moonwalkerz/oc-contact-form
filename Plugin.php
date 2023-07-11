@@ -13,7 +13,7 @@ class Plugin extends PluginBase
     {
         return [
             'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
-            'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
+    //        'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
         ];
     }
 
@@ -21,7 +21,7 @@ class Plugin extends PluginBase
     {
         return [
             'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
-            'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
+ //           'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
         ];
     }
 

@@ -10,7 +10,7 @@ What more do you want?
 
 - Fully manageable from backend.
 - Saving of email and telephone number for marketing purposes.
-- GDPR compliant, with newsletter and thir part privacy rules.
+- GDPR compliant and third part privacy rules.
 - Google reCAPTCHA svailable. [More Info](https://www.google.com/recaptcha/about/)
 - Multilanguage support via Rainlab.Translate plugin
 

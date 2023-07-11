@@ -14,7 +14,3 @@ navigation:
                 label: Contatti
                 url: moonwalkerz/contact/contacts
                 icon: icon-envelope
-            side-subscribers:
-                label: Iscritti
-                url: moonwalkerz/contact/subscribers
-                icon: icon-users
