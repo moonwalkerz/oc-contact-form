@@ -1,7 +1,7 @@
 {
     "name": "moonwalkerz/contact-form-plugin",
     "type": "october-plugin",
-    "description": "Simple Contact Form GDPR compliant",
+    "description": "Just a simple Contact Form plugin for October CMS",
     "homepage": "https://github.com/moonwalkerz/oc-contact",
     "keywords": ["october", "cms","contactform", "plugin"],
     "license": "MIT",
