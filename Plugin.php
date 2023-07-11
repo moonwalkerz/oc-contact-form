@@ -1,6 +1,6 @@
 <?php
 
-namespace Moonwalkerz\Contact;
+namespace MoonWalkerz\Contact;
 
 use System\Classes\PluginBase;
 use System\Classes\MailManager;
@@ -12,16 +12,16 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
-    //        'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
+            'MoonWalkerz\Contact\Components\ContactForm' => 'contactform',
+    //        'MoonWalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
         ];
     }
 
     public function registerPageSnippets()
     {
         return [
-            'Moonwalkerz\Contact\Components\ContactForm' => 'contactform',
- //           'Moonwalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
+            'MoonWalkerz\Contact\Components\ContactForm' => 'contactform',
+ //           'MoonWalkerz\Contact\Components\NewsletterForm' => 'newsletterform',
         ];
     }
 
@@ -50,7 +50,7 @@ class Plugin extends PluginBase
                 'description' => 'moonwalkerz.contact::lang.plugin.manage_settings',
                 'category' => 'system::lang.system.categories.cms',
                 'icon' => 'icon-envelope',
-                'class' => 'Moonwalkerz\Contact\Models\Settings',
+                'class' => 'MoonWalkerz\Contact\Models\Settings',
                 'order' => 500,
                 'keywords' => 'search',
                 'permissions' => ['moonwalkerz.contact.manage_settings'],

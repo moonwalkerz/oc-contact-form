@@ -1,6 +1,6 @@
 name: Subscribers
 form: $/moonwalkerz/contact/models/subsciber/fields.yaml
-modelClass: Moonwalkerz\Contact\Models\Subsciber
+modelClass: MoonWalkerz\Contact\Models\Subsciber
 defaultRedirect: moonwalkerz/contact/subscribers
 create:
     redirect: 'moonwalkerz/contact/subscribers/update/:id'

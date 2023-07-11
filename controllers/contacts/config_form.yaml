@@ -1,6 +1,6 @@
 name: Contacts
 form: $/moonwalkerz/contact/models/contact/fields.yaml
-modelClass: Moonwalkerz\Contact\Models\Contact
+modelClass: MoonWalkerz\Contact\Models\Contact
 defaultRedirect: moonwalkerz/contact/contact
 create:
     redirect: 'moonwalkerz/contact/contacts/update/:id'

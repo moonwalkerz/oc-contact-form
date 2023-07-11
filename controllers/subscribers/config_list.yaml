@@ -1,5 +1,5 @@
 list: $/moonwalkerz/contact/models/subsciber/columns.yaml
-modelClass: Moonwalkerz\Contact\Models\Subsciber
+modelClass: MoonWalkerz\Contact\Models\Subsciber
 title: Subscribers
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true

@@ -1,4 +1,4 @@
 title: Contacts
-modelClass: Moonwalkerz\Contact\Models\Contact
+modelClass: MoonWalkerz\Contact\Models\Contact
 toolbar:
     buttons: reorder_toolbar

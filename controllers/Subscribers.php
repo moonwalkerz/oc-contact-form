@@ -1,4 +1,4 @@
-<?php namespace Moonwalkerz\Contact\Controllers;
+<?php namespace MoonWalkerz\Contact\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
@@ -13,6 +13,6 @@ class Subscribers extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Moonwalkerz.Contact', 'contacts', 'side-subscribers');
+        BackendMenu::setContext('MoonWalkerz.Contact', 'contacts', 'side-subscribers');
     }
 }

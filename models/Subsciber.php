@@ -1,4 +1,4 @@
-<?php namespace Moonwalkerz\Contact\Models;
+<?php namespace MoonWalkerz\Contact\Models;
 
 use Model;
 

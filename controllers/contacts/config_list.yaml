@@ -1,5 +1,5 @@
 list: $/moonwalkerz/contact/models/contact/columns.yaml
-modelClass: Moonwalkerz\Contact\Models\Contact
+modelClass: MoonWalkerz\Contact\Models\Contact
 title: Contacts
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true

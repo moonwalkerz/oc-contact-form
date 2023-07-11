@@ -1,9 +1,9 @@
-<?php namespace Moonwalkerz\Contact\Updates;
+<?php namespace MoonWalkerz\Contact\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableCreateMoonwalkerzContactSubscribers extends Migration
+class BuilderTableCreateMoonWalkerzContactSubscribers extends Migration
 {
     public function up()
     {

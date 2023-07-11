@@ -1,6 +1,6 @@
 <?php
 
-namespace Moonwalkerz\Contact\Models;
+namespace MoonWalkerz\Contact\Models;
 
 use Cms\Classes\Page;
 use Model;

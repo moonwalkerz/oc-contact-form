@@ -1,12 +1,12 @@
 <?php
 
-namespace Moonwalkerz\Contact\Components;
+namespace MoonWalkerz\Contact\Components;
 
 use Cms\Classes\ComponentBase;
 use Flash;
 use Input;
-use Moonwalkerz\Contact\Models\Contact;
-use Moonwalkerz\Contact\Models\Settings;
+use MoonWalkerz\Contact\Models\Contact;
+use MoonWalkerz\Contact\Models\Settings;
 
 use Redirect;
 use ValidationException;
