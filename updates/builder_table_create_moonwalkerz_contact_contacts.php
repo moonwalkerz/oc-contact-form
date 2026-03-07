@@ -9,7 +9,9 @@ class BuilderTableCreateMoonWalkerzContactContacts extends Migration
 {
     public function up()
     {
-        Schema::dropIfExists('moonwalkerz_contact_contacts');
+        if (Schema::hasTable('moonwalkerz_contact_contacts')) {
+            return;
+        }
         Schema::create('moonwalkerz_contact_contacts', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();

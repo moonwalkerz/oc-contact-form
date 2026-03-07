@@ -4,13 +4,11 @@ namespace MoonWalkerz\Contact\Components;
 
 use Cms\Classes\ComponentBase;
 use Flash;
-use Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use MoonWalkerz\Contact\Models\Contact;
 use MoonWalkerz\Contact\Models\Settings;
-
-use Redirect;
-use ValidationException;
-use Validator;
+use October\Rain\Exception\ValidationException;
 
 class NewsletterForm extends ComponentBase
 {
@@ -79,7 +77,7 @@ class NewsletterForm extends ComponentBase
             'email' => 'required|email',
         ];
         if ($this->property('is_gdpr_contact_requested')) {
-            $rules['sw_contact'] = 'required';
+            $rules['sw_contact'] = 'accepted';
         }
         $validator = Validator::make($data, $rules);
 
@@ -89,7 +87,7 @@ class NewsletterForm extends ComponentBase
         } else {
             $contact = new Contact();
 
-            $contact->email = Input::get('email');
+            $contact->email = post('email');
             $contact->save();
 
             Flash::success(trans('moonwalkerz.contact::lang.contactform.subscription_sent'));

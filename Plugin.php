@@ -3,7 +3,6 @@
 namespace MoonWalkerz\Contact;
 
 use System\Classes\PluginBase;
-use System\Classes\MailManager;
 
 class Plugin extends PluginBase
 {
@@ -26,15 +25,30 @@ class Plugin extends PluginBase
     }
 
     /**
-     * registerMailer templates
+     * Register mail templates.
      */
-    public function register()
+    public function registerMailTemplates()
     {
-        MailManager::registerCallback(function ($manager) {
-            $manager->registerMailTemplates([
-                'moonwalkerz.contact::mail.message',
-            ]);
-        });
+        return [
+            'moonwalkerz.contact::mail.message' => 'Contact form message',
+        ];
+    }
+
+    /**
+     * Registers backend permissions.
+     */
+    public function registerPermissions()
+    {
+        return [
+            'moonwalkerz.contact.access_contacts' => [
+                'tab'   => 'moonwalkerz.contact::lang.plugin.name',
+                'label' => 'moonwalkerz.contact::lang.plugin.access_contacts',
+            ],
+            'moonwalkerz.contact.manage_settings' => [
+                'tab'   => 'moonwalkerz.contact::lang.plugin.name',
+                'label' => 'moonwalkerz.contact::lang.plugin.manage_settings',
+            ],
+        ];
     }
 
     /**

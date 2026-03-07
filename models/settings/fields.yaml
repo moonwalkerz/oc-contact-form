@@ -16,4 +16,9 @@ fields:
     google_api_key:
             label: 'moonwalkerz.contact::lang.settings.google_api_key'
             span: left
-            type: text        
+            type: text
+    google_secret_key:
+            label: 'moonwalkerz.contact::lang.settings.google_secret_key'
+            span: right
+            type: text
+            comment: 'moonwalkerz.contact::lang.settings.google_secret_key_comment'

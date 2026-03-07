@@ -14,3 +14,5 @@
     - builder_table_create_moonwalkerz_contact_subscribers.php
 1.0.9:
     - '4.x compatibility fix'
+1.1.0:
+    - 'Security hardening: server-side reCAPTCHA, rate limiting, permissions, input validation'

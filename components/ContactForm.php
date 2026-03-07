@@ -4,13 +4,14 @@ namespace MoonWalkerz\Contact\Components;
 
 use Cms\Classes\ComponentBase;
 use Flash;
-use Input;
-use Mail;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use MoonWalkerz\Contact\Models\Contact;
 use MoonWalkerz\Contact\Models\Settings;
-use Redirect;
-use ValidationException;
-use Validator;
+use October\Rain\Exception\ValidationException;
 
 class ContactForm extends ComponentBase
 {
@@ -23,8 +24,6 @@ class ContactForm extends ComponentBase
     public $is_gdpr_promo_requested;
 
     public $is_gdpr_third_parties_requested;
-
-    public $l;
 
     public function componentDetails()
     {
@@ -106,63 +105,90 @@ class ContactForm extends ComponentBase
 
     public function onSend()
     {
+        // Rate limiting: max 5 submissions per minute per IP
+        $key = 'contact_form_' . request()->ip();
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
+            throw new ValidationException(['message' => 'Too many attempts. Please try again later.']);
+        }
+        RateLimiter::hit($key, 60);
+
+        $settings = Settings::instance();
+
+        // Server-side reCAPTCHA verification
+        if ($settings->captcha && $settings->google_secret_key) {
+            $token = post('g-recaptcha-response');
+            if (empty($token)) {
+                Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
+                throw new ValidationException(['captcha' => 'Please complete the CAPTCHA.']);
+            }
+            $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret'   => $settings->google_secret_key,
+                'response' => $token,
+                'remoteip' => request()->ip(),
+            ]);
+            if (! ($response->json('success') ?? false)) {
+                Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
+                throw new ValidationException(['captcha' => 'CAPTCHA verification failed.']);
+            }
+        }
+
         $data = post();
         $rules = [
-            'name' => 'required|min:5',
-            'email' => 'required|email',
-            'message' => 'required',
+            'name'    => 'required|min:2|max:100',
+            'email'   => 'required|email|max:191',
+            'message' => 'required|max:5000',
         ];
 
         if ($this->property('is_phone_mandatory')) {
-            $rules['phone'] = 'required';
+            $rules['phone'] = 'required|max:30';
+        } elseif (! empty($data['phone'])) {
+            $rules['phone'] = 'max:30';
         }
         if ($this->property('is_gdpr_contact_requested')) {
-            $rules['sw_contact'] = 'required';
+            $rules['sw_contact'] = 'accepted';
         }
 
         $validator = Validator::make($data, $rules);
 
         if ($validator->fails()) {
             Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
-
             throw new ValidationException($validator);
-        } else {
-            $contact = new Contact();
-
-            $contact->name = Input::get('name');
-            $contact->email = Input::get('email');
-            $contact->message = Input::get('message');
-            $contact->phone = Input::get('phone');
-            $contact->sw_contact = Input::get('sw_contact') == 'on' ? 1 : 0;
-            $contact->sw_promo = Input::get('sw_promo') == 'on' ? 1 : 0;
-            $contact->sw_third_parties = Input::get('sw_third_parties') == 'on' ? 1 : 0;
-
-            $contact->save();
-
-            $vars = [
-                'name' => $contact->name,
-                'email' => $contact->email,
-                'msg' => $contact->message,
-                'phone' => $contact->phone,
-                'allow_contact' => Input::get('sw_contact') == 'on' ? 'yes' : 'no',
-                'allow_promo' => Input::get('sw_promo') == 'on' ? 'yes' : 'no',
-                'allow_third_parties' => Input::get('sw_third_parties') == 'on' ? 'yes' : 'no'
-            ];
-            $email = Input::get('email');
-            $name = Input::get('name');
-            /*
-            "An exception has been thrown during the rendering of a template ("Object of class Illuminate\Mail\Message could not be converted to string")
-            */
-
-            Mail::send('moonwalkerz.contact::mail.message', $vars, function ($message) use ($email, $name) {
-                $message->to($this->property('emailto'), $this->property('emailtoname'));
-                $message->replyTo($email, $name);
-                $message->subject($this->property('subject'));
-            });
-
-            Flash::success(trans('moonwalkerz.contact::lang.contactform.message_sent'));
-
-            return Redirect::back();
         }
+
+        $contact = new Contact();
+        $contact->name             = post('name');
+        $contact->email            = post('email');
+        $contact->message          = post('message');
+        $contact->phone            = post('phone');
+        $contact->sw_contact       = post('sw_contact') === 'on' ? 1 : 0;
+        $contact->sw_promo         = post('sw_promo') === 'on' ? 1 : 0;
+        $contact->sw_third_parties = post('sw_third_parties') === 'on' ? 1 : 0;
+        $contact->save();
+
+        $vars = [
+            'name'                => $contact->name,
+            'email'               => $contact->email,
+            'msg'                 => $contact->message,
+            'phone'               => $contact->phone,
+            'allow_contact'       => $contact->sw_contact ? 'yes' : 'no',
+            'allow_promo'         => $contact->sw_promo ? 'yes' : 'no',
+            'allow_third_parties' => $contact->sw_third_parties ? 'yes' : 'no',
+        ];
+
+        $toEmail   = $this->property('emailto');
+        $toName    = $this->property('emailtoname');
+        $subject   = $this->property('subject');
+        $fromEmail = $contact->email;
+        $fromName  = $contact->name;
+
+        Mail::send('moonwalkerz.contact::mail.message', $vars, function ($message) use ($toEmail, $toName, $fromEmail, $fromName, $subject) {
+            $message->to($toEmail, $toName);
+            $message->replyTo($fromEmail, $fromName);
+            $message->subject($subject);
+        });
+
+        Flash::success(trans('moonwalkerz.contact::lang.contactform.message_sent'));
+        return Redirect::back();
     }
 }

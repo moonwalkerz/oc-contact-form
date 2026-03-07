@@ -5,8 +5,12 @@ use BackendMenu;
 
 class Subscribers extends Controller
 {
-    public $implement = [        'Backend\Behaviors\ListController',        'Backend\Behaviors\FormController'    ];
-    
+    public $implement = [
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\FormController::class,
+    ];
+
+    public $requiredPermissions = ['moonwalkerz.contact.access_contacts'];
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
 

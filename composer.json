@@ -15,10 +15,11 @@
           "email": "webmaster@moonwalkerz.dev"
       }
     ],
+    "version": "1.1.0",
     "require": {
         "composer/installers": "~1.0",
-        "php": ">=8.0",
-        "rainlab/translate-plugin": ">=1.9"
+        "php": ">=8.1",
+        "rainlab/translate-plugin": ">=2.0"
     },
         "config": {
             "allow-plugins": {

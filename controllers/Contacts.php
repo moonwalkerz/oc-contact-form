@@ -7,8 +7,13 @@ use BackendMenu;
 
 class Contacts extends Controller
 {
-    public $implement = ['Backend\Behaviors\ListController', 'Backend\Behaviors\FormController', 'Backend\Behaviors\ReorderController'];
+    public $implement = [
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ReorderController::class,
+    ];
 
+    public $requiredPermissions = ['moonwalkerz.contact.access_contacts'];
     public $listConfig = 'config_list.yaml';
 
     public $formConfig = 'config_form.yaml';

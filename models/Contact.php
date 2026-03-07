@@ -15,6 +15,10 @@ class Contact extends Model
      * Validation
      */
     public $rules = [
+        'name'    => 'required|min:2|max:100',
+        'email'   => 'required|email|max:191',
+        'message' => 'required|max:5000',
+        'phone'   => 'nullable|max:30',
     ];
 
     /*
