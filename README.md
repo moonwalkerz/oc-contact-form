@@ -1,4 +1,4 @@
-<p align="center"> <img style="max-width: 100%; margin: 2rem auto; display: block;" src="cover_github.jpg"></p>
+<p align="center"> <img style="max-width: 100%; margin: 2rem auto; display: block;" src="https://raw.githubusercontent.com/moonwalkerz/oc-contact-form/master/cover_github.jpg"></p>
 
 # Contact Form | October CMS
 
