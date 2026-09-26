@@ -1,0 +1,10 @@
+name: moonwalkerz.contact::lang.agenda.menu_label
+form: $/moonwalkerz/contact/models/agenda/fields.yaml
+modelClass: MoonWalkerz\Contact\Models\Agenda
+defaultRedirect: moonwalkerz/contact/agenda
+create:
+    redirect: 'moonwalkerz/contact/agenda/update/:id'
+    redirectClose: moonwalkerz/contact/agenda
+update:
+    redirect: moonwalkerz/contact/agenda
+    redirectClose: moonwalkerz/contact/agenda

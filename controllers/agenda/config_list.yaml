@@ -1,0 +1,11 @@
+list: $/moonwalkerz/contact/models/agenda/columns.yaml
+modelClass: MoonWalkerz\Contact\Models\Agenda
+title: moonwalkerz.contact::lang.agenda.menu_label
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'moonwalkerz/contact/agenda/update/:id'

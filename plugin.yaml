@@ -14,3 +14,7 @@ navigation:
                 label: Contatti
                 url: moonwalkerz/contact/contacts
                 icon: icon-envelope
+            side-agenda:
+                label: moonwalkerz.contact::lang.agenda.menu_label
+                url: moonwalkerz/contact/agenda
+                icon: icon-address-book

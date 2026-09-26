@@ -44,6 +44,10 @@ class Plugin extends PluginBase
                 'tab'   => 'moonwalkerz.contact::lang.plugin.name',
                 'label' => 'moonwalkerz.contact::lang.plugin.access_contacts',
             ],
+            'moonwalkerz.contact.access_agenda' => [
+                'tab'   => 'moonwalkerz.contact::lang.plugin.name',
+                'label' => 'moonwalkerz.contact::lang.plugin.access_agenda',
+            ],
             'moonwalkerz.contact.manage_settings' => [
                 'tab'   => 'moonwalkerz.contact::lang.plugin.name',
                 'label' => 'moonwalkerz.contact::lang.plugin.manage_settings',

@@ -1,0 +1,40 @@
+columns:
+    name:
+        label: moonwalkerz.contact::lang.agenda.name
+        type: text
+    email:
+        label: moonwalkerz.contact::lang.agenda.email
+        type: text
+    phone:
+        label: moonwalkerz.contact::lang.agenda.phone
+        type: text
+    message:
+        label: moonwalkerz.contact::lang.agenda.message
+        type: text
+    address:
+        label: moonwalkerz.contact::lang.agenda.address
+        type: text
+    city:
+        label: moonwalkerz.contact::lang.agenda.city
+        type: text
+    zip:
+        label: moonwalkerz.contact::lang.agenda.zip
+        type: text
+    state:
+        label: moonwalkerz.contact::lang.agenda.state
+        type: text
+    country:
+        label: moonwalkerz.contact::lang.agenda.country
+        type: text
+    sw_gdpr:
+        label: moonwalkerz.contact::lang.agenda.sw_gdpr
+        type: text
+    sw_contact:
+        label: moonwalkerz.contact::lang.agenda.sw_contact
+        type: text
+    sw_promo:
+        label: moonwalkerz.contact::lang.agenda.sw_promo
+        type: text
+    sw_third_parties:
+        label: moonwalkerz.contact::lang.agenda.sw_third_parties
+        type: text

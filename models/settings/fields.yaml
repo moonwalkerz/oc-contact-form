@@ -1,24 +1,398 @@
-fields:
-    company_name:
-        span: auto
-        type: text
-        label: moonwalkerz.contact::lang.settings.company_name
-        comment: moonwalkerz.contact::lang.settings.company_name_comment
-        default: moonwalkerz.contact::lang.settings.company_name_default
-    captcha:
-        span: auto
-        label: 'moonwalkerz.contact::lang.settings.captcha'
-        type: dropdown
-        options:
-            0: 'moonwalkerz.contact::lang.settings.captcha_none'
-            1: 'moonwalkerz.contact::lang.settings.captcha_invisible'
-            2: 'moonwalkerz.contact::lang.settings.captcha_recaptcha'
-    google_api_key:
-            label: 'moonwalkerz.contact::lang.settings.google_api_key'
+tabs:
+    fields:
+        company_name:
+            tab: moonwalkerz.contact::lang.settings.tab_general
+            span: auto
+            type: text
+            label: moonwalkerz.contact::lang.settings.company_name
+            comment: moonwalkerz.contact::lang.settings.company_name_comment
+            default: moonwalkerz.contact::lang.settings.company_name_default
+
+        # ------------------------------------------------------------------
+        # Captcha provider
+        # ------------------------------------------------------------------
+        captcha_provider:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.provider
+            comment: moonwalkerz.contact::lang.captcha.provider_comment
+            default: none
+            options:
+                none: moonwalkerz.contact::lang.captcha.provider_none
+                recaptcha_v2: moonwalkerz.contact::lang.captcha.provider_recaptcha_v2
+                recaptcha_v3: moonwalkerz.contact::lang.captcha.provider_recaptcha_v3
+                recaptcha_enterprise: moonwalkerz.contact::lang.captcha.provider_recaptcha_enterprise
+                hcaptcha: moonwalkerz.contact::lang.captcha.provider_hcaptcha
+                turnstile: moonwalkerz.contact::lang.captcha.provider_turnstile
+                math: moonwalkerz.contact::lang.captcha.provider_math
+
+        # ------------------------------------------------------------------
+        # Google reCAPTCHA v2
+        # ------------------------------------------------------------------
+        _section_recaptcha_v2:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            type: section
+            label: moonwalkerz.contact::lang.captcha.provider_recaptcha_v2
+            comment: moonwalkerz.contact::lang.captcha.help_recaptcha_v2
+            commentHtml: true
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v2]' }
+        recaptcha_v2_site_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
             span: left
             type: text
-    google_secret_key:
-            label: 'moonwalkerz.contact::lang.settings.google_secret_key'
+            label: moonwalkerz.contact::lang.captcha.site_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v2]' }
+        recaptcha_v2_secret_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: sensitive
+            label: moonwalkerz.contact::lang.captcha.secret_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v2]' }
+        recaptcha_v2_mode:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.widget_type
+            comment: moonwalkerz.contact::lang.captcha.widget_type_comment
+            default: checkbox
+            options:
+                checkbox: moonwalkerz.contact::lang.captcha.mode_checkbox
+                invisible: moonwalkerz.contact::lang.captcha.mode_invisible
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v2]' }
+        recaptcha_v2_theme:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.theme
+            default: light
+            options:
+                light: moonwalkerz.contact::lang.captcha.theme_light
+                dark: moonwalkerz.contact::lang.captcha.theme_dark
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v2]' }
+        recaptcha_v2_size:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.size
+            comment: moonwalkerz.contact::lang.captcha.size_comment_invisible
+            default: normal
+            options:
+                normal: moonwalkerz.contact::lang.captcha.size_normal
+                compact: moonwalkerz.contact::lang.captcha.size_compact
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v2]' }
+        recaptcha_v2_badge:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.badge
+            comment: moonwalkerz.contact::lang.captcha.badge_comment
+            default: bottomright
+            options:
+                bottomright: moonwalkerz.contact::lang.captcha.badge_bottomright
+                bottomleft: moonwalkerz.contact::lang.captcha.badge_bottomleft
+                inline: moonwalkerz.contact::lang.captcha.badge_inline
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v2]' }
+
+        # ------------------------------------------------------------------
+        # Google reCAPTCHA v3
+        # ------------------------------------------------------------------
+        _section_recaptcha_v3:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            type: section
+            label: moonwalkerz.contact::lang.captcha.provider_recaptcha_v3
+            comment: moonwalkerz.contact::lang.captcha.help_recaptcha_v3
+            commentHtml: true
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v3]' }
+        recaptcha_v3_site_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: text
+            label: moonwalkerz.contact::lang.captcha.site_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v3]' }
+        recaptcha_v3_secret_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: sensitive
+            label: moonwalkerz.contact::lang.captcha.secret_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v3]' }
+        recaptcha_v3_score:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: number
+            min: 0
+            max: 1
+            step: 0.1
+            default: 0.5
+            label: moonwalkerz.contact::lang.captcha.score
+            comment: moonwalkerz.contact::lang.captcha.score_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v3]' }
+        recaptcha_v3_action:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
             span: right
             type: text
-            comment: 'moonwalkerz.contact::lang.settings.google_secret_key_comment'
+            default: contact_form
+            label: moonwalkerz.contact::lang.captcha.action
+            comment: moonwalkerz.contact::lang.captcha.action_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v3]' }
+        recaptcha_v3_verify_action:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: switch
+            default: true
+            label: moonwalkerz.contact::lang.captcha.verify_action
+            comment: moonwalkerz.contact::lang.captcha.verify_action_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v3]' }
+        recaptcha_v3_hide_badge:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: switch
+            label: moonwalkerz.contact::lang.captcha.hide_badge
+            comment: moonwalkerz.contact::lang.captcha.hide_badge_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_v3]' }
+
+        # ------------------------------------------------------------------
+        # Google reCAPTCHA Enterprise
+        # ------------------------------------------------------------------
+        _section_recaptcha_enterprise:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            type: section
+            label: moonwalkerz.contact::lang.captcha.provider_recaptcha_enterprise
+            comment: moonwalkerz.contact::lang.captcha.help_recaptcha_enterprise
+            commentHtml: true
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+        recaptcha_enterprise_site_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: text
+            label: moonwalkerz.contact::lang.captcha.site_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+        recaptcha_enterprise_project_id:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: text
+            placeholder: my-project-123456
+            label: moonwalkerz.contact::lang.captcha.project_id
+            comment: moonwalkerz.contact::lang.captcha.project_id_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+        recaptcha_enterprise_api_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: sensitive
+            label: moonwalkerz.contact::lang.captcha.api_key
+            comment: moonwalkerz.contact::lang.captcha.api_key_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+        recaptcha_enterprise_mode:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.key_type
+            comment: moonwalkerz.contact::lang.captcha.widget_type_comment
+            default: score
+            options:
+                score: moonwalkerz.contact::lang.captcha.mode_score
+                checkbox: moonwalkerz.contact::lang.captcha.mode_checkbox
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+        recaptcha_enterprise_score:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: number
+            min: 0
+            max: 1
+            step: 0.1
+            default: 0.5
+            label: moonwalkerz.contact::lang.captcha.score
+            comment: moonwalkerz.contact::lang.captcha.score_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+        recaptcha_enterprise_action:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: text
+            default: contact_form
+            label: moonwalkerz.contact::lang.captcha.action
+            comment: moonwalkerz.contact::lang.captcha.action_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+        recaptcha_enterprise_hide_badge:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: switch
+            label: moonwalkerz.contact::lang.captcha.hide_badge
+            comment: moonwalkerz.contact::lang.captcha.hide_badge_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[recaptcha_enterprise]' }
+
+        # ------------------------------------------------------------------
+        # hCaptcha
+        # ------------------------------------------------------------------
+        _section_hcaptcha:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            type: section
+            label: moonwalkerz.contact::lang.captcha.provider_hcaptcha
+            comment: moonwalkerz.contact::lang.captcha.help_hcaptcha
+            commentHtml: true
+            trigger: { action: show, field: captcha_provider, condition: 'value[hcaptcha]' }
+        hcaptcha_site_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: text
+            label: moonwalkerz.contact::lang.captcha.site_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[hcaptcha]' }
+        hcaptcha_secret_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: sensitive
+            label: moonwalkerz.contact::lang.captcha.secret_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[hcaptcha]' }
+        hcaptcha_mode:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.widget_type
+            default: normal
+            options:
+                normal: moonwalkerz.contact::lang.captcha.mode_checkbox
+                invisible: moonwalkerz.contact::lang.captcha.mode_invisible
+            trigger: { action: show, field: captcha_provider, condition: 'value[hcaptcha]' }
+        hcaptcha_theme:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.theme
+            default: light
+            options:
+                light: moonwalkerz.contact::lang.captcha.theme_light
+                dark: moonwalkerz.contact::lang.captcha.theme_dark
+            trigger: { action: show, field: captcha_provider, condition: 'value[hcaptcha]' }
+        hcaptcha_size:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.size
+            comment: moonwalkerz.contact::lang.captcha.size_comment_invisible
+            default: normal
+            options:
+                normal: moonwalkerz.contact::lang.captcha.size_normal
+                compact: moonwalkerz.contact::lang.captcha.size_compact
+            trigger: { action: show, field: captcha_provider, condition: 'value[hcaptcha]' }
+
+        # ------------------------------------------------------------------
+        # Cloudflare Turnstile
+        # ------------------------------------------------------------------
+        _section_turnstile:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            type: section
+            label: moonwalkerz.contact::lang.captcha.provider_turnstile
+            comment: moonwalkerz.contact::lang.captcha.help_turnstile
+            commentHtml: true
+            trigger: { action: show, field: captcha_provider, condition: 'value[turnstile]' }
+        turnstile_site_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: text
+            label: moonwalkerz.contact::lang.captcha.site_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[turnstile]' }
+        turnstile_secret_key:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: sensitive
+            label: moonwalkerz.contact::lang.captcha.secret_key
+            trigger: { action: show, field: captcha_provider, condition: 'value[turnstile]' }
+        turnstile_appearance:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.appearance
+            default: always
+            options:
+                always: moonwalkerz.contact::lang.captcha.appearance_always
+                execute: moonwalkerz.contact::lang.captcha.appearance_execute
+                interaction-only: moonwalkerz.contact::lang.captcha.appearance_interaction
+            trigger: { action: show, field: captcha_provider, condition: 'value[turnstile]' }
+        turnstile_theme:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.theme
+            default: auto
+            options:
+                auto: moonwalkerz.contact::lang.captcha.theme_auto
+                light: moonwalkerz.contact::lang.captcha.theme_light
+                dark: moonwalkerz.contact::lang.captcha.theme_dark
+            trigger: { action: show, field: captcha_provider, condition: 'value[turnstile]' }
+        turnstile_size:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: dropdown
+            label: moonwalkerz.contact::lang.captcha.size
+            default: normal
+            options:
+                normal: moonwalkerz.contact::lang.captcha.size_normal
+                flexible: moonwalkerz.contact::lang.captcha.size_flexible
+                compact: moonwalkerz.contact::lang.captcha.size_compact
+            trigger: { action: show, field: captcha_provider, condition: 'value[turnstile]' }
+
+        # ------------------------------------------------------------------
+        # Math captcha
+        # ------------------------------------------------------------------
+        _section_math:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            type: section
+            label: moonwalkerz.contact::lang.captcha.provider_math
+            comment: moonwalkerz.contact::lang.captcha.help_math
+            trigger: { action: show, field: captcha_provider, condition: 'value[math]' }
+        math_challenge_text:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: text
+            label: moonwalkerz.contact::lang.captcha.math_text
+            comment: moonwalkerz.contact::lang.captcha.math_text_comment
+            placeholder: moonwalkerz.contact::lang.captcha.math_default_text
+            trigger: { action: show, field: captcha_provider, condition: 'value[math]' }
+        math_ttl:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: number
+            min: 60
+            max: 3600
+            step: 60
+            default: 600
+            label: moonwalkerz.contact::lang.captcha.math_ttl
+            comment: moonwalkerz.contact::lang.captcha.math_ttl_comment
+            trigger: { action: show, field: captcha_provider, condition: 'value[math]' }
+
+        # ------------------------------------------------------------------
+        # Extra protection (any provider, also with "none")
+        # ------------------------------------------------------------------
+        _section_protection:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            type: section
+            label: moonwalkerz.contact::lang.captcha.section_protection
+        captcha_honeypot:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: switch
+            default: true
+            label: moonwalkerz.contact::lang.captcha.honeypot
+            comment: moonwalkerz.contact::lang.captcha.honeypot_comment
+        captcha_time_trap:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: number
+            min: 0
+            max: 60
+            default: 3
+            label: moonwalkerz.contact::lang.captcha.time_trap
+            comment: moonwalkerz.contact::lang.captcha.time_trap_comment
+        captcha_verify_hostname:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: left
+            type: switch
+            label: moonwalkerz.contact::lang.captcha.verify_hostname
+            comment: moonwalkerz.contact::lang.captcha.verify_hostname_comment
+            trigger: { action: hide, field: captcha_provider, condition: 'value[none][math]' }
+        captcha_fail_open:
+            tab: moonwalkerz.contact::lang.settings.tab_captcha
+            span: right
+            type: switch
+            label: moonwalkerz.contact::lang.captcha.fail_open
+            comment: moonwalkerz.contact::lang.captcha.fail_open_comment
+            trigger: { action: hide, field: captcha_provider, condition: 'value[none][math]' }

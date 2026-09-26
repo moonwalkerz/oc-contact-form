@@ -8,10 +8,13 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use MoonWalkerz\Contact\Models\Contact;
 use MoonWalkerz\Contact\Models\Settings;
+use MoonWalkerz\Contact\Traits\HandlesCaptcha;
 use October\Rain\Exception\ValidationException;
 
 class NewsletterForm extends ComponentBase
 {
+    use HandlesCaptcha;
+
     public $settings;
 
     public $is_gdpr_contact_requested;
@@ -57,12 +60,7 @@ class NewsletterForm extends ComponentBase
         
         $this->settings = $this->page['settings'] = Settings::instance();
 
-        if ($this->settings->captcha) {
-            $this->addJs('https://www.google.com/recaptcha/api.js', [
-                'async' => 'async',
-                'defer' => 'defer',
-            ]);
-        }
+        $this->addCaptchaAssets();
 
         
         $this->is_gdpr_contact_requested = $this->page['is_gdpr_contact_requested'] = $this->property('is_gdpr_contact_requested');
@@ -72,6 +70,8 @@ class NewsletterForm extends ComponentBase
 
     public function onSave()
     {
+        $this->verifyCaptcha();
+
         $data = post();
         $rules = [
             'email' => 'required|email',

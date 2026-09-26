@@ -4,17 +4,19 @@ namespace MoonWalkerz\Contact\Components;
 
 use Cms\Classes\ComponentBase;
 use Flash;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use MoonWalkerz\Contact\Models\Contact;
 use MoonWalkerz\Contact\Models\Settings;
+use MoonWalkerz\Contact\Traits\HandlesCaptcha;
 use October\Rain\Exception\ValidationException;
 
 class ContactForm extends ComponentBase
 {
+    use HandlesCaptcha;
+
     public $settings;
 
     public $is_phone_requested;
@@ -90,12 +92,7 @@ class ContactForm extends ComponentBase
         
         $this->settings = $this->page['settings'] = Settings::instance();
 
-        if ($this->settings->captcha) {
-            $this->addJs('https://www.google.com/recaptcha/api.js', [
-                'async' => 'async',
-                'defer' => 'defer',
-            ]);
-        }
+        $this->addCaptchaAssets();
 
         $this->is_phone_requested = $this->page['is_phone_requested'] = $this->property('is_phone_requested');
         $this->is_gdpr_contact_requested = $this->page['is_gdpr_contact_requested'] = $this->property('is_gdpr_contact_requested');
@@ -113,25 +110,7 @@ class ContactForm extends ComponentBase
         }
         RateLimiter::hit($key, 60);
 
-        $settings = Settings::instance();
-
-        // Server-side reCAPTCHA verification
-        if ($settings->captcha && $settings->google_secret_key) {
-            $token = post('g-recaptcha-response');
-            if (empty($token)) {
-                Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
-                throw new ValidationException(['captcha' => 'Please complete the CAPTCHA.']);
-            }
-            $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-                'secret'   => $settings->google_secret_key,
-                'response' => $token,
-                'remoteip' => request()->ip(),
-            ]);
-            if (! ($response->json('success') ?? false)) {
-                Flash::error(trans('moonwalkerz.contact::lang.contactform.error'));
-                throw new ValidationException(['captcha' => 'CAPTCHA verification failed.']);
-            }
-        }
+        $this->verifyCaptcha();
 
         $data = post();
         $rules = [

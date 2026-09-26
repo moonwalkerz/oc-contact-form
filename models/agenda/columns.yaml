@@ -1,0 +1,44 @@
+columns:
+    id:
+        label: moonwalkerz.contact::lang.agenda.id
+        type: number
+    name:
+        label: moonwalkerz.contact::lang.agenda.name
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: moonwalkerz.contact::lang.agenda.email
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: moonwalkerz.contact::lang.agenda.phone
+        type: text
+        searchable: true
+    city:
+        label: moonwalkerz.contact::lang.agenda.city
+        type: text
+        searchable: true
+        sortable: true
+    country:
+        label: moonwalkerz.contact::lang.agenda.country
+        type: text
+        searchable: true
+        sortable: true
+    sw_contact:
+        label: moonwalkerz.contact::lang.agenda.sw_contact
+        type: partial
+        path: ~/plugins/moonwalkerz/contact/models/contact/_truefalse.htm
+    sw_promo:
+        label: moonwalkerz.contact::lang.agenda.sw_promo
+        type: partial
+        path: ~/plugins/moonwalkerz/contact/models/contact/_truefalse.htm
+    sw_third_parties:
+        label: moonwalkerz.contact::lang.agenda.sw_third_parties
+        type: partial
+        path: ~/plugins/moonwalkerz/contact/models/contact/_truefalse.htm
+    created_at:
+        label: moonwalkerz.contact::lang.agenda.created_at
+        type: date
+        sortable: true

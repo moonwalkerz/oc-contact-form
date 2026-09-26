@@ -1,0 +1,11 @@
+import:
+    title: moonwalkerz.contact::lang.agenda.import
+    modelClass: MoonWalkerz\Contact\Models\AgendaImport
+    list: $/moonwalkerz/contact/models/agenda/columns_import.yaml
+    redirect: moonwalkerz/contact/agenda
+
+export:
+    title: moonwalkerz.contact::lang.agenda.export
+    modelClass: MoonWalkerz\Contact\Models\AgendaExport
+    list: $/moonwalkerz/contact/models/agenda/columns_import.yaml
+    redirect: moonwalkerz/contact/agenda

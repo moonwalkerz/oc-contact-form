@@ -5,6 +5,20 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.0] – 2026-09-26
+
+### Added
+- **Multi-provider captcha**, selectable in *Settings → Contacts → Captcha*: Google reCAPTCHA v2 (checkbox / invisible), reCAPTCHA v3 (score threshold, action check), reCAPTCHA Enterprise (createAssessment), hCaptcha, Cloudflare Turnstile and a built-in math captcha that needs no keys
+- Per-provider settings with key-setup instructions and links; secret keys use the `sensitive` field widget
+- Honeypot field and minimum fill time, working with any provider (also with "None")
+- Optional hostname verification and fail-open when the provider is unreachable
+- Provider tokens and math challenges are single use; widgets reset automatically after each AJAX request
+- The captcha now protects `NewsletterForm` too (it previously had no server-side check)
+
+### Changed
+- Templates print the captcha with `{{ __SELF__.captchaField()|raw }}` plus a `data-validate-for="captcha"` error placeholder — update any theme overrides of `contactform/default.htm` / `newsletterform/default.htm`
+- Existing reCAPTCHA settings (`captcha`, `google_api_key`, `google_secret_key`) are migrated to reCAPTCHA v2 by the 1.3.0 update
+
 ## [1.1.0] – 2026-03-07
 
 ### Security
