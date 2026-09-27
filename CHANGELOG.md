@@ -5,6 +5,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.1] – 2026-09-27
+
+### Added
+- **Turnstile action check**: each form renders its widget with an `action` (`contact_form`, `newsletter_form`, from the component class name; override `captchaAction()` to change it) and siteverify must echo the same action, as required by Cloudflare's Spin integration contract
+- Provider keys fall back to environment variables when the settings are empty: `{PROVIDER}_SITE_KEY` / `{PROVIDER}_SECRET_KEY` (e.g. `HCAPTCHA_SECRET_KEY`), plus Cloudflare's canonical `TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET`
+- Tokens longer than 2048 characters are rejected before calling the provider
+
+### Changed
+- `CaptchaManager::render()` / `verify()` accept an optional action name; `HandlesCaptcha` passes it automatically
+- reCAPTCHA v3 / Enterprise: the configured action name still wins, the form action is only the fallback
+
 ## [1.3.0] – 2026-09-26
 
 ### Added

@@ -79,15 +79,16 @@ class CaptchaManager
      * Full captcha HTML: widget, token field, honeypot and time trap.
      *
      * @param string $refreshHandler AJAX handler used by the math captcha to fetch a new question.
+     * @param string $action         Name of the protected surface (letters, digits, "_" and "-", max 32 chars).
      */
-    public static function render(string $refreshHandler = ''): string
+    public static function render(string $refreshHandler = '', string $action = ''): string
     {
         $provider = self::provider();
         $html = '';
 
         if ($provider) {
             self::$instances++;
-            $html .= $provider->render('mm-captcha-' . self::$instances);
+            $html .= $provider->withAction(self::action($action))->render('mm-captcha-' . self::$instances);
             $html .= '<input type="hidden" name="mm_captcha_token" class="mm-captcha-token" value="" autocomplete="off">';
         }
 
@@ -113,9 +114,11 @@ class CaptchaManager
     /**
      * Verifies the submitted form.
      *
+     * @param string $action Must match the action the widget was rendered with.
+     *
      * @throws CaptchaFailedException
      */
-    public static function verify(array $post): void
+    public static function verify(array $post, string $action = ''): void
     {
         try {
             self::checkExtras($post);
@@ -127,7 +130,7 @@ class CaptchaManager
             }
 
             try {
-                $provider->verify(self::token($provider, $post), [
+                $provider->withAction(self::action($action))->verify(self::token($provider, $post), [
                     'post'     => $post,
                     'remoteip' => request()->ip(),
                 ]);
@@ -174,6 +177,16 @@ class CaptchaManager
                 );
             }
         }
+    }
+
+    /**
+     * Normalises an action name to what the providers accept.
+     */
+    protected static function action(string $action): string
+    {
+        $action = preg_replace('/[^A-Za-z0-9_-]/', '_', $action);
+
+        return substr((string) $action, 0, 32);
     }
 
     protected static function token(Provider $provider, array $post): string

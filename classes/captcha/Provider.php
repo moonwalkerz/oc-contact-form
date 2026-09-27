@@ -15,6 +15,16 @@ use MoonWalkerz\Contact\Models\Settings;
 abstract class Provider
 {
     /**
+     * Longest token accepted from the form (Turnstile tokens are < 2048 chars).
+     */
+    const MAX_TOKEN_LENGTH = 2048;
+
+    /**
+     * Action name of the surface being protected (e.g. "contact_form").
+     */
+    protected string $action = '';
+
+    /**
      * Internal identifier, also used as the settings prefix.
      */
     abstract public function id(): string;
@@ -53,11 +63,52 @@ abstract class Provider
     }
 
     /**
-     * Reads a provider setting, falling back to the default when empty.
+     * Sets the action name of the form being rendered or verified.
+     */
+    public function withAction(string $action): static
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    public function action(): string
+    {
+        return $this->action;
+    }
+
+    /**
+     * Environment variables read when a setting is empty, e.g. the
+     * TURNSTILE_SECRET written by a deployment tool. Keyed by setting name.
+     */
+    protected function envAliases(): array
+    {
+        return [];
+    }
+
+    /**
+     * Reads a provider setting. Falls back to the environment
+     * ({ID}_{KEY}, e.g. TURNSTILE_SECRET_KEY, or a provider alias) and then
+     * to the default when empty.
      */
     public function config(string $key, $default = null)
     {
         $value = Settings::get($this->id() . '_' . $key);
+
+        if ($value === null || $value === '') {
+            $names = array_merge(
+                [strtoupper($this->id() . '_' . $key)],
+                (array) ($this->envAliases()[$key] ?? [])
+            );
+
+            foreach ($names as $name) {
+                $env = env($name);
+
+                if ($env !== null && $env !== '') {
+                    return $env;
+                }
+            }
+        }
 
         return ($value === null || $value === '') ? $default : $value;
     }
@@ -144,6 +195,10 @@ abstract class Provider
     {
         if ($token === '') {
             throw new CaptchaFailedException(trans('moonwalkerz.contact::lang.captcha.error_missing'), 'missing token');
+        }
+
+        if (strlen($token) > self::MAX_TOKEN_LENGTH) {
+            throw new CaptchaFailedException(trans('moonwalkerz.contact::lang.captcha.error_failed'), 'token too long');
         }
 
         $data = $this->remoteCall($url, array_filter([

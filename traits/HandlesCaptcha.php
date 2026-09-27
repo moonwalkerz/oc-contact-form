@@ -6,6 +6,7 @@ use Flash;
 use MoonWalkerz\Contact\Classes\Captcha\CaptchaFailedException;
 use MoonWalkerz\Contact\Classes\Captcha\CaptchaManager;
 use MoonWalkerz\Contact\Classes\Captcha\Providers\MathCaptcha;
+use Illuminate\Support\Str;
 use October\Rain\Exception\ValidationException;
 
 /**
@@ -43,7 +44,16 @@ trait HandlesCaptcha
 
     public function captchaField(): string
     {
-        return CaptchaManager::render($this->alias . '::onRefreshCaptcha');
+        return CaptchaManager::render($this->alias . '::onRefreshCaptcha', $this->captchaAction());
+    }
+
+    /**
+     * Action name sent to the provider and checked on verification
+     * ("contact_form", "newsletter_form"). Override in a component to change it.
+     */
+    protected function captchaAction(): string
+    {
+        return Str::snake(class_basename($this));
     }
 
     /**
@@ -52,7 +62,7 @@ trait HandlesCaptcha
     protected function verifyCaptcha(): void
     {
         try {
-            CaptchaManager::verify(post());
+            CaptchaManager::verify(post(), $this->captchaAction());
         } catch (CaptchaFailedException $e) {
             Flash::error($e->getMessage());
             throw new ValidationException(['captcha' => $e->getMessage()]);

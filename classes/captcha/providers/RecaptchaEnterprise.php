@@ -115,8 +115,11 @@ class RecaptchaEnterprise extends Provider
         $this->commonChecks($props['hostname'] ?? null, $token);
     }
 
-    protected function action(): string
+    /**
+     * Configured action name; the form's own action is the fallback.
+     */
+    public function action(): string
     {
-        return (string) $this->config('action', 'contact_form');
+        return (string) $this->config('action', parent::action() ?: 'contact_form');
     }
 }

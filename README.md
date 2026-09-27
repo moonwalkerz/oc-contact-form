@@ -52,6 +52,10 @@ Using this plugin is really simple. Before using it, you need to follow these st
 2) Set up the Contacts settings in October CMS backend, under Settings > Contacts. In this section, you can insert the company name, which will be used to autocomplete the GDPR checkbox.
 3) Choose a captcha provider in Settings > Contacts > Captcha and fill in its keys. Each provider shows the instructions and the links to get the keys. If you don't want to use an external service, pick the math captcha.
 
+   Keys can also come from the environment: a setting left empty falls back to `{PROVIDER}_SITE_KEY` / `{PROVIDER}_SECRET_KEY` (for example `HCAPTCHA_SECRET_KEY`); Turnstile also reads Cloudflare's canonical `TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET`. This keeps the secret out of the database and lets deployment tools such as Cloudflare's Turnstile Spin write it to `.env`.
+
+   Turnstile tokens are verified server side against `https://challenges.cloudflare.com/turnstile/v0/siteverify` and must carry the form's action (`contact_form` or `newsletter_form`, from the component class name; override `captchaAction()` in a component to change it). Enable "Verify hostname" to also require the token to have been solved on the same host that receives the submission.
+
 Now, you can insert the `contactform` component in your page. You can set additional custom settings, such as:
 - Email destination address
 - Name of email sender

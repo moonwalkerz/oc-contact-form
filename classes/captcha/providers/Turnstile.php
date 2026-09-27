@@ -2,10 +2,14 @@
 
 namespace MoonWalkerz\Contact\Classes\Captcha\Providers;
 
+use MoonWalkerz\Contact\Classes\Captcha\CaptchaFailedException;
 use MoonWalkerz\Contact\Classes\Captcha\Provider;
 
 /**
  * Cloudflare Turnstile.
+ *
+ * Keys come from the plugin settings or, when those are empty, from the
+ * TURNSTILE_SITE_KEY / TURNSTILE_SECRET environment variables.
  */
 class Turnstile extends Provider
 {
@@ -29,6 +33,14 @@ class Turnstile extends Provider
         return 'cf-turnstile-response';
     }
 
+    protected function envAliases(): array
+    {
+        return [
+            'site_key'   => ['TURNSTILE_SITE_KEY', 'TURNSTILE_SITEKEY'],
+            'secret_key' => ['TURNSTILE_SECRET'],
+        ];
+    }
+
     public function render(string $id): string
     {
         return $this->widget($id, [
@@ -41,6 +53,7 @@ class Turnstile extends Provider
                 'appearance'          => (string) $this->config('appearance', 'always'),
                 'response-field-name' => $this->responseField(),
                 'language'            => $this->locale(),
+                'action'              => $this->action(),
             ],
         ], 'mm-captcha-turnstile');
     }
@@ -48,6 +61,19 @@ class Turnstile extends Provider
     public function verify(string $token, array $ctx): void
     {
         $data = $this->siteverify(self::VERIFY_URL, $token, $ctx);
+
+        // The token must have been issued for this form: siteverify echoes
+        // the "action" the widget was rendered with. Cloudflare's testing
+        // keys (1x0000…AA / 2x0000…AA) do not echo it, so they are exempt.
+        $expected = $this->action();
+        $testingKey = ! empty($data['metadata']['result_with_testing_key']);
+
+        if ($expected !== '' && ! $testingKey && (($data['action'] ?? '') !== $expected)) {
+            throw new CaptchaFailedException(
+                trans('moonwalkerz.contact::lang.captcha.error_failed'),
+                'action ' . ($data['action'] ?? '(none)') . " != {$expected}"
+            );
+        }
 
         $this->commonChecks($data['hostname'] ?? null, $token);
     }
