@@ -44,6 +44,35 @@ composer require moonwalkerz/contact-plugin
 php artisan october:migrate
 ```
 
+### October CMS 4.x: getting versions newer than 1.0.9
+
+The October marketplace gateway (`gateway.octobercms.com`) still lists this plugin at 1.0.9, and an October project treats that gateway as the canonical source for every `*-plugin` package. Composer therefore refuses the newer releases published on Packagist (1.1.0, 1.3.0, 1.3.1, …) with *"has higher repository priority … not installable"*.
+
+Until the marketplace listing is updated, tell Composer to take this one package from Packagist. In your project's `composer.json`, add this entry **before** the `octobercms` repository:
+
+```json
+"repositories": [
+    {
+        "type": "composer",
+        "url": "https://repo.packagist.org",
+        "only": ["moonwalkerz/contact-plugin"]
+    },
+    {
+        "name": "octobercms",
+        "type": "composer",
+        "url": "https://gateway.octobercms.com",
+        "only": ["october/*", "*-plugin", "*-theme"]
+    }
+]
+```
+
+then run:
+
+```
+composer require moonwalkerz/contact-plugin:^1.3
+php artisan october:migrate
+```
+
 ## ⚙️ Documentation ⚙️
 
 Using this plugin is really simple. Before using it, you need to follow these steps:
